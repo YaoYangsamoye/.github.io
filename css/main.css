@@ -1990,7 +1990,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #79d4ff;
+  background: #7c004f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2787,6 +2787,7 @@ pre .javascript .function {
   }
 }
 .header-inner {
+/*菜单栏透明度*/
   position: absolute;
   top: 0;
   overflow: hidden;
@@ -2847,6 +2848,7 @@ pre .javascript .function {
   }
 }
 .content-wrap {
+/*内容板块*/
   float: right;
   box-sizing: border-box;
   padding: 40px;
@@ -3168,15 +3170,60 @@ pre .javascript .function {
 }
 .post {
   margin-top: 0px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+  -webkit-box-shadow: 0 0 10px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 10px rgba(202,203,204,0.5);
+  background: rgba(255,255,255,0.5);
 }
 body {
   background: url("/images/backgroud.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;
-  background-size: cover;
+/*博客背景图*/
+  background-repeat: no-repeat; /*规定如何重复背景图像*/
+  background-attachment: fixed; /*规定背景图像是否固定或者随着页面的其余部分滚动。*/
+  background-position: 50% 50%; /*规定背景图像的位置*/
+  background-size: cover; /*背景图尺寸*/
+}
+.gallery-page {
+  margin-top: 10px;
+}
+.img-list,
+.gallery-list {
+  display: flex;
+  flex-direction: row; /*项目排列方向：列*/
+  flex-wrap: nowrap; /*是否换行*/
+  align-items: flex-start;
+}
+.img-column {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.img-column a,
+.gallery-column a {
+  border-bottom: 0px;
+}
+.gallery-item {
+  margin-bottom: 50px;
+}
+.gallery-item p {
+  margin: 25px auto 10px;
+  max-width: 50%;
+  text-align: center;
+  font-size: 15px;
+  color: #222;
+  background: rgba(255,255,255,0.3);
+  border-radius: 7px;
+  border: 1px solid #222;
+  box-shadow: 0 8px 20px -8px rgba(0,0,0,0.3);
+}
+.posts-expand .post-body .gallery-column a img {
+  height: 300px;
+  width: 250px;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .gallery-item p {
+    min-width: 75px;
+    font-size: 13px;
+  }
 }

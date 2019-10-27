@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/yaoyangsamoye.js","daovoice")
+  daovoice('init', {
+      app_id: "307a70bf"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo,next,相册," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="起因 搭建博客的时候看到这篇博客,发现其中的相册功能蛮有意思的，想着不错哎能记录一下自己的经历，等自己回过头时候看蛮有意思的，一直也想做一个。可是我这人吧还比较贱，非得折磨自己，就一直一直找，终于我发现了这篇博客,这位博主的教程写的都很全面了，但我还是遇到了坑，哈哈哈哈，我太笨了。  准备工作 本节内容是基于实现本地保存图片功能前提记录的笔记，如果是用图床外链，可以跳过所有涉及到img文件夹以及">
+<meta name="keywords" content="Hexo,next,相册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next搭建个人相册">
+<meta property="og:url" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;2019&#x2F;10&#x2F;27&#x2F;Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C&#x2F;index.html">
+<meta property="og:site_name" content="要养萨摩耶的小窝">
+<meta property="og:description" content="起因 搭建博客的时候看到这篇博客,发现其中的相册功能蛮有意思的，想着不错哎能记录一下自己的经历，等自己回过头时候看蛮有意思的，一直也想做一个。可是我这人吧还比较贱，非得折磨自己，就一直一直找，终于我发现了这篇博客,这位博主的教程写的都很全面了，但我还是遇到了坑，哈哈哈哈，我太笨了。  准备工作 本节内容是基于实现本地保存图片功能前提记录的笔记，如果是用图床外链，可以跳过所有涉及到img文件夹以及">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-27T13:11:45.670Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://YaoYangsamoye.github.io/2019/10/27/Next搭建个人相册/"/>
+
+
+
+
+
+  <title>Next搭建个人相册 | 要养萨摩耶的小窝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">要养萨摩耶的小窝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">每天进补一点点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            
+            书单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            
+            观影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-album">
+          <a href="/album/" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://YaoYangsamoye.github.io/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="要养萨摩耶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yaoyangsamoye.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要养萨摩耶的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Next搭建个人相册</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-27T19:09:43+08:00">
+                2019-10-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-27T21:11:45+08:00">
+                2019-10-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/" class="leancloud_visitors" data-flag-title="Next搭建个人相册">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><hr>
+<p>搭建博客的时候看到<a href="https://asdfv1929.github.io/" target="_blank" rel="noopener">这篇博客</a>,发现其中的相册功能蛮有意思的，想着不错哎能记录一下自己的经历，等自己回过头时候看蛮有意思的，一直也想做一个。可是我这人吧还比较贱，非得折磨自己，就一直一直找，终于我发现了<a href="https://co5.me/2018/181112-gallerry2.html#CSS%E6%A0%B7%E5%BC%8F" target="_blank" rel="noopener">这篇博客</a>,这位博主的教程写的都很全面了，但我还是遇到了坑，哈哈哈哈，我太笨了。</p>
+<hr>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><hr>
+<p>本节内容是基于实现本地保存图片功能前提记录的笔记，如果是用图床外链，可以跳过所有涉及到img文件夹以及img/s文件夹的步骤。</p>
+<p>本相册的所有功能均仅测试了在hexo-theme-next下实现的效果，使用其它主题时部分布局尺寸数据可能会出现偏差，需要自行根据主      题设置修改。</p>
+<hr>
+<h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><hr>
+<p>在 git bash 中输入命令hexo new page gallery；  （这里我建议把名字改成album或者photos）<br>在hexo/sourse/gallery目录下建立你需要的分类相册文件夹；<br>进入hexo/sourse/gallery目录，新建img文件夹用来存放相册封面；<br>在每个相册文件夹中创建img文件夹用来存放大图，以及img/s文件夹用来存放缩略图。<br>Ps. img/s文件夹可以省略不建，用文件名-s.jpg的格式重命名缩略图即可。<br>(这里我的大图是使用的外链，缩略图存放在文件里）</p>
+<hr>
+<h1 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h1><hr>
+<h2 id="原图处理："><a href="#原图处理：" class="headerlink" title="原图处理："></a>原图处理：</h2><p>将需要上传的图片放入gallery/相册名/img文件夹中，为了加载速度建议压缩至 1mb 以下，使用 jpg 格式保存；<br>除了文件大小以外没有其它要求，但是为了方便后续页面编辑，建议将文件以容易辨识的方式重命名，例如日期-图片名.jpg。</p>
+<hr>
+<h2 id="缩略图处理："><a href="#缩略图处理：" class="headerlink" title="缩略图处理："></a>缩略图处理：</h2><hr>
+<p>将gallery/相册名/img下的所有图片复制到gallery/相册名/img/s文件夹中，使用 PS 等其它处理工具压缩图片大小；<br>建议宽度为 300px，最终输出文件大小在 30kb 左右，高度无要求。</p>
+<hr>
+<h2 id="封面图处理"><a href="#封面图处理" class="headerlink" title="封面图处理"></a>封面图处理</h2><hr>
+<p>从每个相册的缩略图中挑选需要的封面，复制到gallery/img文件夹中；<br>建议重命名为相册名.jpg。</p>
+<hr>
+<h1 id="相册主界面"><a href="#相册主界面" class="headerlink" title="相册主界面"></a>相册主界面</h1><hr>
+<p> 打开gallery/index.md，将title设置成你需要的相册页面名称；<br> (可选）在日期下方加上comments: false关闭评论；<br> 复制以下代码粘贴至正文，并按需求修改相册描述、相册名、相册文件夹名以及封面图文件名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;！相册描述【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;center&gt;自定义分隔符【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;div class=&quot;gallery-page&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;gallery-list&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;【！相册文件夹名】&quot;&gt;&lt;img src=&quot;img/【！封面图文件名】.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- ！相册1 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;【！相册文件夹名】&quot;&gt;&lt;img src=&quot;img/【！封面图文件名】.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- ！相册2 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;sample&quot;&gt;&lt;img src=&quot;img/sample.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- 相册名 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;sample&quot;&gt;&lt;img src=&quot;img/sample.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- 相册名 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;center&gt;自定义分割线【此行可删除】&lt;/center&gt;</span><br></pre></td></tr></table></figure>
+<p>Ps. 1. 需要使用外链的场合，将“img/【！封面图文件名】.jpg”和“”替换为图床外链地址即可；<br>Ps. 2. 代码中 <code>&lt;div class=&quot;gallery-column&quot;&gt;</code> 元素为分列显示相册的列数，可按需要增减；<br>Ps. 3. 新增相册时请确认代码添加在<code>&lt;div class=&quot;gallery-column&quot;&gt;</code>元素内部，否则会造成显示错误。<br>Ps. 4. 这里的相册文件名是你的分类相册的文件夹名</p>
+<hr>
+<hr>
+<h1 id="分类相册界面"><a href="#分类相册界面" class="headerlink" title="分类相册界面"></a>分类相册界面</h1><p>打开gallery/相册名/index.md，将title设置成你需要的分类相册页面名称；<br>（可选）在日期下方加上comments: false关闭评论；<br>复制以下代码粘贴至正文，并按需求修改相册描述、图片名以及缩略图文件名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;！相册描述【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;center&gt;自定义分隔符【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;div class=&quot;gallery-page&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;img-list&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">			&lt;a href=&quot;img/【！图片名1】.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/【！缩略图文件名1】.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">			&lt;a href=&quot;img/【！图片名2】.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/【！缩略图文件名2】.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">			&lt;a href=&quot;img/sample.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/sample.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">			&lt;a href=&quot;img/sample.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/sample.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;center&gt;自定义分割线【此行可删除】&lt;/center&gt;</span><br></pre></td></tr></table></figure>
+<p>Ps. 1. 需要使用外链的场合，将”img/【图片名】.jpg”替换为图床外链地址即可，如果图床加载速度够快可以用同一个链接填充缩略图部分；<br>Ps. 2. 代码中<code>&lt;div class=&quot;img-column&quot;&gt;</code>元素为分列显示图片的列数，可按需要增减；<br>Ps. 3. 添加图片时请确认代码添加在<code>&lt;div class=&quot;img-column&quot;&gt;</code>元素内部，否则会造成显示错误。</p>
+<hr>
+<h1 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h1><hr>
+<p>在…\themes\next\source\css_custom\custom.styl中加入如下代码(如果没有，请新建):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/*gallery*/</span><br><span class="line">/*相册标题距图片的位置*/</span><br><span class="line">.gallery-page &#123;</span><br><span class="line">	margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.img-list,</span><br><span class="line">.gallery-list &#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	flex-direction: row;   /*项目排列方向：列*/</span><br><span class="line">	flex-wrap: nowrap;   /*是否换行*/</span><br><span class="line">	align-items: flex-start;</span><br><span class="line">&#125;</span><br><span class="line">.img-column &#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	flex-direction: column-reverse;</span><br><span class="line">&#125;</span><br><span class="line">/*样式*/</span><br><span class="line">.img-column a,</span><br><span class="line">.gallery-column a &#123;</span><br><span class="line">	border-bottom: 0px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*相册名距评论框的位置*/</span><br><span class="line">.gallery-item &#123;</span><br><span class="line">	margin-bottom: 50px;</span><br><span class="line">&#125;</span><br><span class="line">/*相册名框的位置*/</span><br><span class="line">.gallery-item p &#123;</span><br><span class="line">	margin: 25px auto 10px;</span><br><span class="line">	max-width: 50%;</span><br><span class="line">	text-align: center;</span><br><span class="line">	font-size: 15px;</span><br><span class="line">	color: $black-deep;</span><br><span class="line">	background: rgba(255,255,255,.3);</span><br><span class="line">	border-radius: 7px;</span><br><span class="line">	border: 1px solid $black-deep;</span><br><span class="line">	box-shadow: 0 8px 20px -8px rgba(0,0,0,.3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*相册的封面大小*/</span><br><span class="line">.posts-expand .post-body .gallery-column a img &#123;</span><br><span class="line">	height: 300px;</span><br><span class="line">	width: 250px;</span><br><span class="line">	object-fit: cover;</span><br><span class="line">&#125;</span><br><span class="line">@media (max-width: 767px)&#123;</span><br><span class="line">	.gallery-item p &#123;</span><br><span class="line">		min-width: 75px;</span><br><span class="line">		font-size: 13px;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Ps. 1.<code>@media</code>标签内的样式是防止移动端浏览时相册名被强制换行的，建议保留；<br>Ps. 2. 其余样式除了 flex 相关行与object-fit样式以外，均可根据需要自行更改，在此不作赘述。</p>
+<hr>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><hr>
+<p>flex 布局：<br><a href="https://zhuanlan.zhihu.com/p/25303493" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25303493</a><br>CSS 裁剪：<br><a href="https://drkbl.com/css-responsable-image-cut-without-distort/" target="_blank" rel="noopener">https://drkbl.com/css-responsable-image-cut-without-distort/</a></p>
+<hr>
+<h1 id="模板文档"><a href="#模板文档" class="headerlink" title="模板文档"></a>模板文档</h1><hr>
+<p>这里是这位博主在Google的模板文件和css样式，<a href="https://drive.google.com/open?id=1nu8gASxuMPjggUaPirRA_Vh07d8nGKpB" target="_blank" rel="noopener">点此下载</a>。包含了 CSS 样式代码文件和一个简单的 readme。<br>本文大部分转载自：<a href="https://co5.me/2018/181112-gallerry2.html" target="_blank" rel="noopener">https://co5.me/2018/181112-gallerry2.html</a></p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>1.其实这种相册本质上就是没有文字只有图片的文章，再加一些页面布局，难点就是实现站内网页的跳转。但对我这种对前端一窍不通的小菜鸟来说已经帮助很大了，万分感谢。<br>2.如果你做完以上步骤之后，发现点击相册封面不能跳转图片只能放大的问题。找到<code>主题配置文件</code>的<code>fancybox</code>,将<code>enable</code>的值设置为<code>false</code>。<br>3.<code>href</code>访问站内文件需要进入站内文件的文件夹，实现站内页面跳转。</p>
+<hr>
+<p>感谢聚合图床：<a href="https://www.superbed.cn/" target="_blank" rel="noopener">https://www.superbed.cn/</a></p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Next搭建个人相册</a></p>
+  <p><span>文章作者:</span>要养萨摩耶</a></p>
+  <p><span>发布时间:</span>2019年10月27日 - 19:09:43</p>
+  <p><span>最后更新:</span>2019年10月27日 - 21:11:45</p>
+  <p><span>原始链接:</span><a href="/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/" title="Next搭建个人相册">https://yaoyangsamoye.github.io/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yaoyangsamoye.github.io/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您捧场</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="要养萨摩耶 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="要养萨摩耶 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/next/" rel="tag"># next</a>
+          
+            <a href="/tags/%E7%9B%B8%E5%86%8C/" rel="tag"># 相册</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/24/html%E8%B0%83%E7%94%A8%E6%A1%8C%E9%9D%A2exe%E7%A8%8B%E5%BA%8F/" rel="next" title="html调用桌面exe程序">
+                <i class="fa fa-chevron-left"></i> html调用桌面exe程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/yaoyangsamoye.png"
+                alt="要养萨摩耶" />
+            
+              <p class="site-author-name" itemprop="name">要养萨摩耶</p>
+              <p class="site-description motion-element" itemprop="description">遥不可及的并不是十年之后，而是十年之前。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/YaoYangsamoye" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yaoyangsamoye@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/7324980511/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/user/home?id=437278583" target="_blank" title="网易云音乐">
+                      
+                        <i class="fa fa-fw fa-music"></i>网易云音乐</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#起因"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建目录"><span class="nav-number">3.</span> <span class="nav-text">创建目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片处理"><span class="nav-number">4.</span> <span class="nav-text">图片处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原图处理："><span class="nav-number">4.1.</span> <span class="nav-text">原图处理：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩略图处理："><span class="nav-number">4.2.</span> <span class="nav-text">缩略图处理：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封面图处理"><span class="nav-number">4.3.</span> <span class="nav-text">封面图处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相册主界面"><span class="nav-number">5.</span> <span class="nav-text">相册主界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类相册界面"><span class="nav-number">6.</span> <span class="nav-text">分类相册界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-样式"><span class="nav-number">7.</span> <span class="nav-text">CSS 样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">8.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板文档"><span class="nav-number">9.</span> <span class="nav-text">模板文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>  
+  
+
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">要养萨摩耶</span>
+  
+  <br>
+  
+  
+  <span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+		var t1 = Date.UTC(2019,10,22,12,00,00); //北京时间2019-10-22-12：00：00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 网站已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+	siteTime();
+</script>
+
+  
+
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">4.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"> 本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '2028385d2d1b065e2ea5',
+          clientSecret: '7945ee18a2df660e0bfd33198facc8d5d60a6877',
+          repo: 'blog_comment',
+          owner: 'YaoYangsamoye',
+          admin: ['YaoYangsamoye'],
+          id: md5(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("OoMFObbbBCBSfaiK3vOonoG6-gzGzoHsz", "jpDXMyk7tzaDm0WFaEPFLeSz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <!-- 音乐播放器 -->
+ <link rel="stylesheet" href="/dist/APlayer.min.css">
+ <div id="aplayer"></div>
+ <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+ <script type="text/javascript" src="/dist/music.js"></script>
+
+ <!-- 页面点击小红心 -->
+ <script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>

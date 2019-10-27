@@ -49,10 +49,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -134,15 +130,21 @@
 
 
 
-<meta name="description" content="遥不可及的并不是十年之后，而是十年之前。">
+<meta name="description" content="20170316                                                                               20180922">
 <meta name="keywords" content="程序猿">
 <meta property="og:type" content="website">
-<meta property="og:title" content="要养萨摩耶的小窝">
-<meta property="og:url" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;tags&#x2F;%E5%9F%BA%E7%A1%80&#x2F;index.html">
+<meta property="og:title" content="相册">
+<meta property="og:url" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;album&#x2F;index.html">
 <meta property="og:site_name" content="要养萨摩耶的小窝">
-<meta property="og:description" content="遥不可及的并不是十年之后，而是十年之前。">
+<meta property="og:description" content="20170316                                                                               20180922">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;album&#x2F;album_cover&#x2F;20170316_5.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;album&#x2F;album_cover&#x2F;20180922_3.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;album&#x2F;album_cover&#x2F;20171023_4.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;album&#x2F;album_cover&#x2F;20181003_1.jpg">
+<meta property="og:updated_time" content="2019-10-27T09:39:51.397Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;yaoyangsamoye.github.io&#x2F;album&#x2F;album_cover&#x2F;20170316_5.jpg">
 
 
 
@@ -153,7 +155,7 @@
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
@@ -172,13 +174,13 @@
 
 
 
-  <link rel="canonical" href="https://YaoYangsamoye.github.io/tags/基础/"/>
+  <link rel="canonical" href="https://YaoYangsamoye.github.io/album/"/>
 
 
 
 
 
-  <title>标签: 基础 | 要养萨摩耶的小窝</title>
+  <title>相册 | 要养萨摩耶的小窝</title>
   
 
 
@@ -197,7 +199,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,8 +238,6 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
             首页
           </a>
         </li>
@@ -245,8 +245,6 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             标签
           </a>
@@ -256,8 +254,6 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
             分类
           </a>
         </li>
@@ -265,8 +261,6 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             关于
           </a>
@@ -276,19 +270,31 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
             归档
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-book">
-          <a href="/book/" rel="section">
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            书单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
             
-            书架
+            观影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-album">
+          <a href="/album/" rel="section">
+            
+            相册
           </a>
         </li>
       
@@ -298,8 +304,6 @@
           
             <a href="javascript:;" class="popup-trigger">
           
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -345,54 +349,65 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>基础<small>标签</small>
-        </h1>
-      </div>
+	<h1 class="post-title" itemprop="name headline">相册</h1>
+
+
+
+</header>
 
       
+      
+      
+      <div class="post-body">
         
-
-  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/10/24/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0/" itemprop="url">
-              
-                <span itemprop="name">大数相加</span>
-              
-            </a>
-        
-      </h2>
+          <div class="gallery-page">
+    <div class="gallery-list">
+        <div class="gallery-column">
+            <div class="gallery-item">
+                <a href="20170316"><img src="album_cover/20170316_5.jpg">
+                </a>
+                <p> 20170316 </p>
+            </div>
+            <div class="gallery-item">
+                <a href="20180922"><img src="album_cover/20180922_3.jpg">
+                </a>
+                <p> 20180922 </p>
+            </div>
+        </div>    
+        <div class="gallery-column">
+            <div class="gallery-item">
+                <a href="20171023"><img src="album_cover/20171023_4.jpg">
+                </a>
+                <p> 20171023 </p>
+            </div>
+            <div class="gallery-item">
+                <a href="20181003"><img src="album_cover/20181003_1.jpg">
+                </a>
+                <p> 20181003 </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-24T15:29:01+08:00"
-              content="2019-10-24" >
-          10-24
-        </time>
+
+        
       </div>
-
-    </header>
-  </article>
-
-
+      
+      
       
     </div>
-
+    
+    
+    
   </div>
-  
-  
-  
-
-  
 
 
           </div>
@@ -400,6 +415,14 @@
 
 
           
+
+  
+    <div id="gitalk-container">
+    </div>
+  
+
+
+
 
         </div>
         
@@ -440,7 +463,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -462,7 +485,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -592,7 +615,7 @@
     
       <span class="post-meta-item-text">站点总字数&#58;</span>
     
-    <span title="站点总字数">2.4k</span>
+    <span title="站点总字数">4.4k</span>
   
 </div>
 
@@ -658,8 +681,6 @@
 
 
 
-  
-
 
 
 
@@ -696,11 +717,6 @@
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
 
   
 
@@ -722,6 +738,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -763,6 +783,22 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '2028385d2d1b065e2ea5',
+          clientSecret: '7945ee18a2df660e0bfd33198facc8d5d60a6877',
+          repo: 'blog_comment',
+          owner: 'YaoYangsamoye',
+          admin: ['YaoYangsamoye'],
+          id: md5(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
 
   
 
@@ -771,7 +807,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "./public/search.xml";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
