@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>c++标准程序库——读书笔记（1）</title>
+    <url>/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><hr>
+<p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器，  algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。<br>template  模板<br><code>template &lt;class T&gt;</code></p>
+<hr>
+<hr>
+<p>STL 的基本观念就是把数据和操作区分开，数据用<code>容器</code>管理，操作用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法：处理集合内的元素。</p>
+<h1 id="容器-container"><a href="#容器-container" class="headerlink" title="容器 container"></a>容器 container</h1><hr>
+<p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap</p>
+<hr>
+<h2 id="序列式容器"><a href="#序列式容器" class="headerlink" title="序列式容器"></a>序列式容器</h2><hr>
+<p>vector允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时。<br>deque可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时<br>list由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个      元素。<br>string可以当作STL容器来使用，和vector类似，但其元素主要是字符<br>array没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p>
+<hr>
+<h2 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h2><hr>
+<p>sets内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br>multisets的特点与set相同，但其值允许重复。允许出现多次<br>maps的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br>multimap和map的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>标准库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Next搭建个人相册</title>
     <url>/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/</url>
     <content><![CDATA[<hr>
@@ -89,7 +115,7 @@
 <p>本文转载自：<a href="https://www.cnblogs.com/hg-super-man/p/10651418.html" target="_blank" rel="noopener">https://www.cnblogs.com/hg-super-man/p/10651418.html</a></p>
 <hr>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><hr>
-<p>写一点收获，markdown插入图片的方法 ![avatar] ()括号里填网络地址，这种方法非常依赖网络。<br> <img src="https://cdn.akc.org/akcdoglovers/Samoyed_hero1.jpg" alt="avatar"></p>
+<p>写一点收获，markdown插入图片的方法 ![avatar] ()括号里填网络地址，这种方法非常依赖网络。<br> <img src="https://cdn.akc.org/akcdoglovers/Samoyed_hero1.jpg" alt="avatar"><br> 图片来源于网络，如有侵权，请联系我删除！</p>
 <hr>
 ]]></content>
       <categories>
@@ -120,7 +146,7 @@
 <hr>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>笔记</category>
       </categories>
       <tags>
         <tag>c++</tag>
@@ -162,9 +188,9 @@
         <category>教程</category>
       </categories>
       <tags>
+        <tag>教程</tag>
         <tag>Hexo</tag>
         <tag>next</tag>
-        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
