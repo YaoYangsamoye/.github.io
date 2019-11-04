@@ -130,15 +130,15 @@
 
 
 
-<meta name="description" content="简介 STL  Standard Template Library 标准模板库STL有6大组件：container 容器，  algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数&#x2F;函数对象，  allocator  配置器。template  模板template &amp;lt;class T&amp;gt;   STL 的基本观念就是把数据">
+<meta name="description" content="简介 STL  Standard Template Library 标准模板库STL有6大组件：container 容器， algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数&#x2F;函数对象，  allocator  配置器。  template  模板template &amp;lt;classT&amp;gt;  STL 的基本观念就是把数据和">
 <meta name="keywords" content="c++,标准库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++标准程序库——读书笔记（1）">
 <meta property="og:url" content="https:&#x2F;&#x2F;yaoyangsamoye.top&#x2F;2019&#x2F;11&#x2F;03&#x2F;c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="要养萨摩耶的小窝">
-<meta property="og:description" content="简介 STL  Standard Template Library 标准模板库STL有6大组件：container 容器，  algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数&#x2F;函数对象，  allocator  配置器。template  模板template &amp;lt;class T&amp;gt;   STL 的基本观念就是把数据">
+<meta property="og:description" content="简介 STL  Standard Template Library 标准模板库STL有6大组件：container 容器， algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数&#x2F;函数对象，  allocator  配置器。  template  模板template &amp;lt;classT&amp;gt;  STL 的基本观念就是把数据和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-03T13:13:33.515Z">
+<meta property="og:updated_time" content="2019-11-04T06:05:40.150Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -403,8 +403,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-03T21:13:33+08:00">
-                2019-11-03
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-04T14:05:40+08:00">
+                2019-11-04
               </time>
             
           </span>
@@ -464,7 +464,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  534 字
+                  667 字
                 </span>
               
 
@@ -480,7 +480,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -502,18 +502,22 @@
 
       
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><hr>
-<p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器，  algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。<br>template  模板<br><code>template &lt;class T&gt;</code></p>
+<p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器， algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。</p>
 <hr>
+<p>template  模板<br><code>template &lt;classT&gt;</code></p>
 <hr>
-<p>STL 的基本观念就是把数据和操作区分开，数据用<code>容器</code>管理，操作用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法：处理集合内的元素。</p>
-<h1 id="容器-container"><a href="#容器-container" class="headerlink" title="容器 container"></a>容器 container</h1><hr>
-<p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap</p>
+<p>STL 的基本观念就是把<code>数据</code>和<code>操作</code>区分开，<code>数据</code>用<code>容器</code>管理，<code>操作</code>用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法: 处理集合内的元素。</p>
+<hr>
+<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><hr>
+<p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap，自动对容器内的元素进行排序</p>
+<h2 id="容器的内置函数"><a href="#容器的内置函数" class="headerlink" title="容器的内置函数"></a>容器的内置函数</h2><hr>
+<p>push_back()为容器附加元素<br>size()返回容器中元素的个数<br>push_front()在集群的前面添加元素个数<br>pop_front()会删除容器中的第一个元素但不会返<br>empty()判断容器是否为空<br>如果在vector容器中向头部添加元素，要移动所有元素，其时间复杂度很高，所以vector不提供该成员函数</p>
 <hr>
 <h2 id="序列式容器"><a href="#序列式容器" class="headerlink" title="序列式容器"></a>序列式容器</h2><hr>
-<p>vector允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时。<br>deque可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时<br>list由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个      元素。<br>string可以当作STL容器来使用，和vector类似，但其元素主要是字符<br>array没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p>
+<p><code>vector</code>允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时，必须挪动其他元素。<br><code>deque</code>可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时。<br><code>list</code>由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个元素。存取动作成线性变化<br><code>string</code>可以当作STL容器来使用，和<code>vector</code>类似，但其元素主要是字符<br><code>array</code>没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p>
 <hr>
 <h2 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h2><hr>
-<p>sets内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br>multisets的特点与set相同，但其值允许重复。允许出现多次<br>maps的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br>multimap和map的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p>
+<p><code>sets</code>内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br><code>multisets</code>的特点与set相同，但其值允许重复。允许出现多次<br><code>maps</code>的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br><code>multimap</code>和<code>map</code>的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p>
 <hr>
 
       
@@ -535,7 +539,7 @@
   <p><span>本文标题:</span>c++标准程序库——读书笔记（1）</a></p>
   <p><span>文章作者:</span>要养萨摩耶</a></p>
   <p><span>发布时间:</span>2019年11月03日 - 18:55:09</p>
-  <p><span>最后更新:</span>2019年11月03日 - 21:13:33</p>
+  <p><span>最后更新:</span>2019年11月04日 - 14:05:40</p>
   <p><span>原始链接:</span><a href="/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/" title="c++标准程序库——读书笔记（1）">https://yaoyangsamoye.top/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yaoyangsamoye.top/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"  aria-label="复制成功！"></i></span>
   </p>
@@ -623,6 +627,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/11/04/c++%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="c++基本数据类型">
+                c++基本数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -706,7 +714,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -788,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器-container"><span class="nav-number">2.</span> <span class="nav-text">容器 container</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列式容器"><span class="nav-number">2.1.</span> <span class="nav-text">序列式容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联式容器"><span class="nav-number">2.2.</span> <span class="nav-text">关联式容器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器"><span class="nav-number">2.</span> <span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器的内置函数"><span class="nav-number">2.1.</span> <span class="nav-text">容器的内置函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列式容器"><span class="nav-number">2.2.</span> <span class="nav-text">序列式容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联式容器"><span class="nav-number">2.3.</span> <span class="nav-text">关联式容器</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -874,7 +882,7 @@
     
       <span class="post-meta-item-text">站点总字数&#58;</span>
     
-    <span title="站点总字数">5k</span>
+    <span title="站点总字数">5.7k</span>
   
 </div>
 

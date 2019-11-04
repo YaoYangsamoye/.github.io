@@ -1,21 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>c++基本数据类型</title>
+    <url>/2019/11/04/c++%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>记录c++中一些基本的数据类型。</p>
+<hr>
+<h1 id="基本内置类型"><a href="#基本内置类型" class="headerlink" title="基本内置类型"></a>基本内置类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>布尔型</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>int</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>float</td>
+</tr>
+<tr>
+<td>双浮点型</td>
+<td>double</td>
+</tr>
+<tr>
+<td>无类型</td>
+<td>void</td>
+</tr>
+<tr>
+<td>宽字符型</td>
+<td>wchar_t</td>
+</tr>
+</tbody></table>
+<p>宽字符型<code>wcha_t</code>的定义：<br><code>typedef short int wchar_t;</code> </p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>所占字节数</th>
+<th>最大值</th>
+<th>最小值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bool</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>char</td>
+<td>1</td>
+<td></td>
+<td>€</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>wchar_t</td>
+<td>2</td>
+<td>65535</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>32767</td>
+<td>-32768</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>2147483647</td>
+<td>-2147483648</td>
+</tr>
+<tr>
+<td>unsigned</td>
+<td>4</td>
+<td>4294967295</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4</td>
+<td>2147483647</td>
+<td>-2147483648</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>4</td>
+<td>4294967295</td>
+<td>0</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>1.79769e+308</td>
+<td>2.22507e-308</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>8</td>
+<td>1.79769e+308</td>
+<td>2.22507e-308</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>3.40282e+38</td>
+<td>1.17549e-38</td>
+</tr>
+<tr>
+<td>size_t:</td>
+<td>4</td>
+<td>4294967295</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>8</td>
+<td>9223372036854775807</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>-9223372036854775808</td>
+</tr>
+<tr>
+<td>string:</td>
+<td>28</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<p>注意：以上不同操作系统和不同编译器的结果可能有差异。<br>unsigned 的存在与否决定数据的取值是否取负。</p>
+<hr>
+<h1 id="typedef声明"><a href="#typedef声明" class="headerlink" title="typedef声明"></a>typedef声明</h1><hr>
+<p>typedef 为一个已有的类型取一个新的名字，常用于结构体的重命名。使用方式如下：<br><code>typedef 原名称  新名称;</code><br><code>typedef char new_char;</code></p>
+<hr>
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>枚举类型(enumeration)是C++中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。</p>
+<p>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。</p>
+<p>创建枚举，需要使用关键字 enum。枚举类型的一般形式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum 枚举名&#123; </span><br><span class="line">     标识符[=整型常数], </span><br><span class="line">     标识符[=整型常数], </span><br><span class="line">... </span><br><span class="line">    标识符[=整型常数]</span><br><span class="line">&#125; 枚举变量;</span><br></pre></td></tr></table></figure>
+
+<p>如果枚举没有初始化, 即省掉”=整型常数”时, 则从第一个标识符开始。</p>
+<p>例如，下面的代码定义了一个颜色枚举，变量 c 的类型为 color。最后，c 被赋值为 “blue”。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum color &#123; red, green, blue &#125; c;</span><br><span class="line">c = blue;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，green 的值为 5。</p>
+<p><code>enum color { red, green=5, blue };</code><br>在这里，blue 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1，但 red 的值依然为 0。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>c++标准程序库——读书笔记（1）</title>
     <url>/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><hr>
-<p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器，  algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。<br>template  模板<br><code>template &lt;class T&gt;</code></p>
+<p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器， algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。</p>
 <hr>
+<p>template  模板<br><code>template &lt;classT&gt;</code></p>
 <hr>
-<p>STL 的基本观念就是把数据和操作区分开，数据用<code>容器</code>管理，操作用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法：处理集合内的元素。</p>
-<h1 id="容器-container"><a href="#容器-container" class="headerlink" title="容器 container"></a>容器 container</h1><hr>
-<p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap</p>
+<p>STL 的基本观念就是把<code>数据</code>和<code>操作</code>区分开，<code>数据</code>用<code>容器</code>管理，<code>操作</code>用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法: 处理集合内的元素。</p>
+<hr>
+<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><hr>
+<p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap，自动对容器内的元素进行排序</p>
+<h2 id="容器的内置函数"><a href="#容器的内置函数" class="headerlink" title="容器的内置函数"></a>容器的内置函数</h2><hr>
+<p>push_back()为容器附加元素<br>size()返回容器中元素的个数<br>push_front()在集群的前面添加元素个数<br>pop_front()会删除容器中的第一个元素但不会返<br>empty()判断容器是否为空<br>如果在vector容器中向头部添加元素，要移动所有元素，其时间复杂度很高，所以vector不提供该成员函数</p>
 <hr>
 <h2 id="序列式容器"><a href="#序列式容器" class="headerlink" title="序列式容器"></a>序列式容器</h2><hr>
-<p>vector允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时。<br>deque可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时<br>list由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个      元素。<br>string可以当作STL容器来使用，和vector类似，但其元素主要是字符<br>array没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p>
+<p><code>vector</code>允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时，必须挪动其他元素。<br><code>deque</code>可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时。<br><code>list</code>由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个元素。存取动作成线性变化<br><code>string</code>可以当作STL容器来使用，和<code>vector</code>类似，但其元素主要是字符<br><code>array</code>没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p>
 <hr>
 <h2 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h2><hr>
-<p>sets内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br>multisets的特点与set相同，但其值允许重复。允许出现多次<br>maps的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br>multimap和map的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p>
+<p><code>sets</code>内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br><code>multisets</code>的特点与set相同，但其值允许重复。允许出现多次<br><code>maps</code>的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br><code>multimap</code>和<code>map</code>的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p>
 <hr>
 ]]></content>
       <categories>
@@ -188,9 +372,9 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>教程</tag>
         <tag>Hexo</tag>
         <tag>next</tag>
+        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
