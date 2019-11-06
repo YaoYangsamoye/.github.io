@@ -130,16 +130,16 @@
 
 
 
-<meta name="description" content="引用与指针的区别与联系 引用是一个变量的别名，是一个对象的代替名，用符号&amp;amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。区别：1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。2)）指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成">
+<meta name="description" content="引用与指针的区别与联系 引用是一个变量的别名，是一个对象的代替名，用符号&amp;amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。区别：1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。2)指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成别">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c&#x2F;c++面试知识点（1）">
 <meta property="og:url" content="https:&#x2F;&#x2F;yaoyangsamoye.top&#x2F;2019&#x2F;11&#x2F;06&#x2F;c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="要养萨摩耶的小窝">
-<meta property="og:description" content="引用与指针的区别与联系 引用是一个变量的别名，是一个对象的代替名，用符号&amp;amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。区别：1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。2)）指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成">
+<meta property="og:description" content="引用与指针的区别与联系 引用是一个变量的别名，是一个对象的代替名，用符号&amp;amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。区别：1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。2)指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成别">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Hc7c7d54a6bf648bf86d799f637d65c37N.png">
-<meta property="og:updated_time" content="2019-11-06T06:43:53.991Z">
+<meta property="og:updated_time" content="2019-11-06T07:14:39.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;ae01.alicdn.com&#x2F;kf&#x2F;Hc7c7d54a6bf648bf86d799f637d65c37N.png">
 
@@ -405,7 +405,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-06T14:43:53+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-06T15:14:39+08:00">
                 2019-11-06
               </time>
             
@@ -515,7 +515,7 @@
 
       
         <h1 id="引用与指针的区别与联系"><a href="#引用与指针的区别与联系" class="headerlink" title="引用与指针的区别与联系"></a>引用与指针的区别与联系</h1><hr>
-<p>引用是一个变量的别名，是一个对象的代替名，用符号&amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。<br>区别：<br>1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。<br>2)）指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成别的变量的引用3)引用没有空间的概念他不占用内存，仅在编译时有效。</p>
+<p>引用是一个变量的别名，是一个对象的代替名，用符号&amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。<br>区别：<br>1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。<br>2)指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成别的变量的引用<br>3)引用没有空间的概念他不占用内存，仅在编译时有效。</p>
 <hr>
 <h1 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h1><hr>
 <h2 id="数据结构的堆和栈"><a href="#数据结构的堆和栈" class="headerlink" title="数据结构的堆和栈"></a>数据结构的堆和栈</h2><hr>
@@ -588,7 +588,7 @@
   <p><span>本文标题:</span>c/c++面试知识点（1）</a></p>
   <p><span>文章作者:</span>要养萨摩耶</a></p>
   <p><span>发布时间:</span>2019年11月06日 - 14:15:57</p>
-  <p><span>最后更新:</span>2019年11月06日 - 14:43:53</p>
+  <p><span>最后更新:</span>2019年11月06日 - 15:14:39</p>
   <p><span>原始链接:</span><a href="/2019/11/06/c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89/" title="c/c++面试知识点（1）">https://yaoyangsamoye.top/2019/11/06/c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yaoyangsamoye.top/2019/11/06/c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89/"  aria-label="复制成功！"></i></span>
   </p>
