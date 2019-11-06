@@ -1,248 +1,488 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>c/c++面试知识点（1）</title>
-      <link href="/2019/11/06/c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89/"/>
-      <url>/2019/11/06/c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89/</url>
-      
-        <content type="html"><![CDATA[<h1 id="引用与指针的区别与联系"><a href="#引用与指针的区别与联系" class="headerlink" title="引用与指针的区别与联系"></a>引用与指针的区别与联系</h1><hr><p>引用是一个变量的别名，是一个对象的代替名，用符号&amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。<br>区别：<br>1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。<br>2)指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成别的变量的引用<br>3)引用没有空间的概念他不占用内存，仅在编译时有效。</p><hr><h1 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h1><hr><h2 id="数据结构的堆和栈"><a href="#数据结构的堆和栈" class="headerlink" title="数据结构的堆和栈"></a>数据结构的堆和栈</h2><hr><p>栈是一种可以实现“先进后出”（或者称为“后进先出”）的存储结构<br>堆则是一种经过排序的树形数据结构，常用来实现优先队列等，是一种特殊的完全二叉树。</p><hr><h2 id="内存分配中的堆和栈"><a href="#内存分配中的堆和栈" class="headerlink" title="内存分配中的堆和栈"></a>内存分配中的堆和栈</h2><hr><p>一个c++程序在运行时主要占据以下六种内存区</p><p><strong>代码区</strong><br> 程序被操作系统加载到内存时，所有可执行的代码被加载到代码区，也叫代码段，存储程序的代码指令。程序运行时，这段区域数据不可被修改只可以被执行。</p><p><strong>全局区/静态区</strong><br>程序中的静态变量、全局变量存放在此区域（初始化的全局变量和静态变量在一块区域）。代码执行期间一直占用内存！</p><p><strong>堆/自由存储区</strong><br>堆是不连续的内存区域，获得的空间比较灵活，也比较大，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便。需要程序员申请的内存空间，空间的释放一般由程序员控制(比如new, delete, malloc, free)。当程序员没有释放该内存空间的时候，程序运行完毕时操作系统会对该内存空间进行回收。</p><p><strong>栈</strong><br>栈是一块连续的内存的区域，一般栈的大小都是预先设置好的，如果申请的空间超过栈的剩余空间时，将提示overflow。存放的通常是变量通常是局部变量、函数参数等。</p><p><strong>文字常量区</strong><br>常量字符串就是放在这里的。 程序结束后由系统释放。</p><p><strong>bss段</strong><br>定义而没有赋初值的全局变量和静态变量,放在这个区域，通常只是记录变量名和大小，相当于一个占位符。</p><p> 一个程序本质上都是由.bss段、.data段、.text段三个组成的。.data段包含三个部分：heap(堆)、stack(栈)和静态数据区。.text段存放代码区。.bss 里面装载了未被初始化的数据；如图：<br><img src="https://ae01.alicdn.com/kf/Hc7c7d54a6bf648bf86d799f637d65c37N.png" alt="avator"></p><hr><h1 id="new和delete是如何实现的，new-与-malloc的异同处"><a href="#new和delete是如何实现的，new-与-malloc的异同处" class="headerlink" title="new和delete是如何实现的，new 与 malloc的异同处"></a>new和delete是如何实现的，new 与 malloc的异同处</h1><hr><p>new，在动态内存中为对象分配空间并返回一个指向该对象的指针，我们可以选择对对象初始化；delete接受一个动态对象的指针，销毁对象，并释放对应内存。<br>operator new 申请内存之后不对内存进行初始化，直接返回申请内存的指针。<br>new申请一片内存，然后调用构造函数，返回一个申请内存的指针。内置数据类型没有构造函数</p><hr><h1 id="c和c-的区别"><a href="#c和c-的区别" class="headerlink" title="c和c++的区别"></a>c和c++的区别</h1><hr><p>c是面向过程编程<br>c++是面向对象编程<br>管理动态内存的方法不一样，c是malloc/free函数，c++是new/delete关键字，c++支持函数重载<br>c++有引用</p><hr><h1 id="struct和class的区别"><a href="#struct和class的区别" class="headerlink" title="struct和class的区别"></a>struct和class的区别</h1><hr><p>C++ 中保留了C语言的 struct 关键字，并且加以扩充。在C语言中，struct 只能包含成员变量，不能包含成员函数。而在C++中，struct 类似于 class，既可以包含成员变量，又可以包含成员函数。<br>C++中的 struct 和 class 基本是通用的，唯有几个细节不同：<br>使用 class 时，类中的成员如果不声明，默认都是 private 属性的；而使用 struct 时，结构体中的成员默认都是 public 属性的。<br>class 继承默认是 private 继承，而 struct 继承默认是 public 继承<br>class 可以使用模板，而 struct 不能<br>struct更适合看成是一个数据结构的实现体，class更适合看成是一个对象的实现体。</p><hr><h1 id="define-和const的区别（编译阶段、安全性、内存占用等）"><a href="#define-和const的区别（编译阶段、安全性、内存占用等）" class="headerlink" title="define 和const的区别（编译阶段、安全性、内存占用等）"></a>define 和const的区别（编译阶段、安全性、内存占用等）</h1><hr><p> 用#define MAX 255定义的常量是没有类型的，所给出的是一个立即数，编译器只是把所定义的常量值与所定义的常量的名字联系起来，define所定义的宏变量在预处理的时候进行替换，在程序中使用到该常量的地方都要进行拷贝替换；<br>用const float MAX = 255; 定义的常量有类型名字，存放在内存的静态区域中，在程序运行过程中const变量只有一个拷贝，而#define 所定义的宏变量却有多个拷贝，所以宏定义在程序运行过程中所消耗的内存要比const变量的大得多；<br> 用define定义的常量是不可以用指针变量去指向的，用const定义的常量是可以用指针去指向该常量的地址的；<br>用define可以定义一些简单的函数，const是不可以定义函数的.</p><p><strong>1.编译器处理方式</strong><br>define – 在预处理阶段进行替换<br>const – 在编译时确定其值<br><strong>2.类型检查</strong><br>define – 无类型，不进行类型安全检查，可能会产生意想不到的错误<br>const – 有数据类型，编译时会进行类型检查<br><strong>3.内存空间</strong><br>define – 不分配内存，给出的是立即数，有多少次使用就进行多少次替换，在内存中会有多个拷贝，消耗内存大<br>const – 在静态存储区中分配空间，在程序运行过程中内存中只有一个拷贝<br><strong>4.其他</strong><br>在编译时， 编译器通常不为const常量分配存储空间，而是将它们保存在符号表中，这使得它成为一个编译期间的常量，没有了存储与读内存的操作，使得它的效率也很高。</p><hr><h1 id="在C-中const和static的用法（定义，用途）"><a href="#在C-中const和static的用法（定义，用途）" class="headerlink" title="在C++中const和static的用法（定义，用途）"></a>在C++中const和static的用法（定义，用途）</h1><hr><p><strong>const</strong><br>用法：修饰变量，参数，返回值。 C++中的const关键字的用法非常灵活，而使用const将大大改善程序的健壮性。const 允许指定语义约束，告诉编译器哪些变量是不可以改变的。<br>修饰变量：C语言中const将一个变量转化为常变量，存储在静态文本段，只有读取权限，C++中同样会将一个变量转化成常量，C++会对其进行优化，将其放入寄存器中，如果想去内存中读取该数据时，我们可以使用volatile关键字进行修饰，保证其可见性。<br>修饰指针变量： 如果const位于* 左侧时，不能修改指针所指的对象<br>如果const位于* 右侧时，不能修改指针的指向，所以必须初始化。<br>修饰参数：作用是原参数在该函数中不可被改变。<br>修饰的返回值：也是用const来修饰返回的指针或引用，保护指针指向的内容或引用的内容不被修改，也常用于运算符重载。归根究底就是使得函数调用表达式不能作为左值。</p><p><strong>static</strong><br>全局变量：修饰的全局变量，指定其内部链接，也就是只能本文件使用。<br>局部变量：修饰的局部变量，改变其生命周期，并不会修改器作用域。<br>普通函数：修饰的普通函数，指定其内部链接，也就是只能本文可见。</p><hr><h1 id="const和static在类中使用的注意事项（定义、初始化和使用）"><a href="#const和static在类中使用的注意事项（定义、初始化和使用）" class="headerlink" title="const和static在类中使用的注意事项（定义、初始化和使用）"></a>const和static在类中使用的注意事项（定义、初始化和使用）</h1><hr><p>const定义的常量在超出其作用域之后其空间会被释放，而static定义的静态常量在函数执行后不会释放其存储空间。</p><p>static表示的是静态的。类的静态成员函数、静态成员变量是和类相关的，而不是和类的具体对象相关的。即使没有具体对象，也能调用类的静态成员函数和成员变量。一般类的静态函数几乎就是一个全局函数，只不过它的作用域限于包含它的文件中。</p><p>在C++中，static静态成员变量不能在类的内部初始化。在类的内部只是声明，定义必须在类定义体的外部，通常在类的实现文件中初始化，如：double Account::Rate=2.25;static关键字只能用于类定义体内部的声明中，定义时不能标示为static.</p><p>在C++中，const成员变量也不能在类定义处初始化，只能通过构造函数初始化列表进行，并且必须有构造函数。</p><p>const数据成员 只在某个对象生存期内是常量，而对于整个类而言却是可变的。因为类可以创建多个对象，不同的对象其const数据成员的值可以不同。所以不能在类的声明中初始化const数据成员，因为类的对象没被创建时，编译器不知道const数据成员的值是什么。</p><p>const数据成员的初始化只能在类的构造函数的初始化列表中进行。要想建立在整个类中都恒定的常量，应该用类中的枚举常量来实现，或者static cosnt。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">class A  </span><br><span class="line">&#123;  </span><br><span class="line">public:  </span><br><span class="line">      A(int a);  </span><br><span class="line">      static void print();//静态成员函数  </span><br><span class="line">private:  </span><br><span class="line">      static int aa;//静态数据成员的声明  </span><br><span class="line">       static const int count;//常量静态数据成员（可以在构造函数中初始化）  </span><br><span class="line">       const int bb;//常量数据成员  </span><br><span class="line">&#125;;  </span><br><span class="line">int A::aa=0;//静态成员的定义+初始化  </span><br><span class="line">const int A::count=25;//静态常量成员定义+初始化  </span><br><span class="line">A::A(int a):bb(a)//常量成员的初始化  </span><br><span class="line">&#123;  </span><br><span class="line">      aa+=1;  </span><br><span class="line">&#125;  </span><br><span class="line">void A::print()  </span><br><span class="line">&#123;  </span><br><span class="line">      cout&lt;&lt;&quot;count=&quot;&lt;&lt;count&lt;&lt;endl;  </span><br><span class="line">      cout&lt;&lt;&quot;aa=&quot;&lt;&lt;aa&lt;&lt;endl;  </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line">void main()  </span><br><span class="line">&#123;  </span><br><span class="line">      A a(10);  </span><br><span class="line">      A::print();//通过类访问静态成员函数  </span><br><span class="line">      a.print();//通过对象访问静态成员函数  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>常量数据成员的初始化，只能在构造函数初始化列表中初始化     类名::构造函数:常量数据成员</strong></p><hr><h1 id="C-中的const类成员函数（用法和意义），以及和非const成员函数的区别"><a href="#C-中的const类成员函数（用法和意义），以及和非const成员函数的区别" class="headerlink" title="C++中的const类成员函数（用法和意义），以及和非const成员函数的区别"></a>C++中的const类成员函数（用法和意义），以及和非const成员函数的区别</h1><hr><p>const 成员函数可以使用类中的所有成员变量，但是不能修改它们的值，这种措施主要还是为了保护数据而设置的。const 成员函数也称为常成员函数。<br>常成员函数需要在声明和定义的时候在函数头部的结尾加上 const 关键字<br>函数开头的 const 用来修饰函数的返回值，表示返回值是 const 类型，也就是不能被修改，例如const char * getname()。<br>函数头部的结尾加上 const 表示常成员函数，这种函数只能读取成员变量的值，而不能修改成员变量<br>的值，例如char * getname() const。</p><hr><h1 id="C-的顶层const和底层const"><a href="#C-的顶层const和底层const" class="headerlink" title="C++的顶层const和底层const"></a>C++的顶层const和底层const</h1><hr><p>顶层const：const修饰指针本身<br>底层const：const修饰指针指向的那个内存数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">const int*p1 = &amp;a; //p1是底层const，通过p1不能改变p1指向的数据a。p1本身可变。</span><br><span class="line">int const*p2 = &amp;a; //同上，p2是底层const，通过p2不能改变p2指向的数据a。p2本身可变。</span><br><span class="line">int* const p3 = &amp;a; //p3是顶层const，p3本身不能改变，始终指向a，但是通过p3可以改变a的值</span><br><span class="line">const int* const p4 = &amp;a; //顶层const和底层const的结合。p4本身是const，且通过p4无法</span><br></pre></td></tr></table></figure><hr>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>c/c++面试知识点（1）</title>
+    <url>/2019/11/06/c%E5%92%8Cc++%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="引用与指针的区别与联系"><a href="#引用与指针的区别与联系" class="headerlink" title="引用与指针的区别与联系"></a>引用与指针的区别与联系</h1><hr>
+<p>引用是一个变量的别名，是一个对象的代替名，用符号&amp;来引导，对一个变量的引用做任何操作就是对这个变量做相同的操作。<br>区别：<br>1)指针是一个变量的地址，而引用则是变量的别名。因此，在程序中表示对象变量时，前者要通过取内容运算符「*」，而后者可以直接代表。像普通变量那样。<br>2)指针是可变的，可以忽而指向变量 a，忽而指向变量 b。而引用则只能在声明时一次初始化，不能在随后变成别的变量的引用<br>3)引用没有空间的概念他不占用内存，仅在编译时有效。</p>
+<hr>
+<h1 id="堆和栈的区别"><a href="#堆和栈的区别" class="headerlink" title="堆和栈的区别"></a>堆和栈的区别</h1><hr>
+<h2 id="数据结构的堆和栈"><a href="#数据结构的堆和栈" class="headerlink" title="数据结构的堆和栈"></a>数据结构的堆和栈</h2><hr>
+<p>栈是一种可以实现“先进后出”（或者称为“后进先出”）的存储结构<br>堆则是一种经过排序的树形数据结构，常用来实现优先队列等，是一种特殊的完全二叉树。</p>
+<hr>
+<h2 id="内存分配中的堆和栈"><a href="#内存分配中的堆和栈" class="headerlink" title="内存分配中的堆和栈"></a>内存分配中的堆和栈</h2><hr>
+<p>一个c++程序在运行时主要占据以下六种内存区</p>
+<p><strong>代码区</strong><br> 程序被操作系统加载到内存时，所有可执行的代码被加载到代码区，也叫代码段，存储程序的代码指令。程序运行时，这段区域数据不可被修改只可以被执行。</p>
+<p><strong>全局区/静态区</strong><br>程序中的静态变量、全局变量存放在此区域（初始化的全局变量和静态变量在一块区域）。代码执行期间一直占用内存！</p>
+<p><strong>堆/自由存储区</strong><br>堆是不连续的内存区域，获得的空间比较灵活，也比较大，一般速度比较慢，而且容易产生内存碎片,不过用起来最方便。需要程序员申请的内存空间，空间的释放一般由程序员控制(比如new, delete, malloc, free)。当程序员没有释放该内存空间的时候，程序运行完毕时操作系统会对该内存空间进行回收。</p>
+<p><strong>栈</strong><br>栈是一块连续的内存的区域，一般栈的大小都是预先设置好的，如果申请的空间超过栈的剩余空间时，将提示overflow。存放的通常是变量通常是局部变量、函数参数等。</p>
+<p><strong>文字常量区</strong><br>常量字符串就是放在这里的。 程序结束后由系统释放。</p>
+<p><strong>bss段</strong><br>定义而没有赋初值的全局变量和静态变量,放在这个区域，通常只是记录变量名和大小，相当于一个占位符。</p>
+<p> 一个程序本质上都是由.bss段、.data段、.text段三个组成的。.data段包含三个部分：heap(堆)、stack(栈)和静态数据区。.text段存放代码区。.bss 里面装载了未被初始化的数据；如图：<br><img src="https://ae01.alicdn.com/kf/Hc7c7d54a6bf648bf86d799f637d65c37N.png" alt="avator"></p>
+<hr>
+<h1 id="new和delete是如何实现的，new-与-malloc的异同处"><a href="#new和delete是如何实现的，new-与-malloc的异同处" class="headerlink" title="new和delete是如何实现的，new 与 malloc的异同处"></a>new和delete是如何实现的，new 与 malloc的异同处</h1><hr>
+<p>new，在动态内存中为对象分配空间并返回一个指向该对象的指针，我们可以选择对对象初始化；delete接受一个动态对象的指针，销毁对象，并释放对应内存。<br>operator new 申请内存之后不对内存进行初始化，直接返回申请内存的指针。<br>new申请一片内存，然后调用构造函数，返回一个申请内存的指针。内置数据类型没有构造函数</p>
+<hr>
+<h1 id="c和c-的区别"><a href="#c和c-的区别" class="headerlink" title="c和c++的区别"></a>c和c++的区别</h1><hr>
+<p>c是面向过程编程<br>c++是面向对象编程<br>管理动态内存的方法不一样，c是malloc/free函数，c++是new/delete关键字，c++支持函数重载<br>c++有引用</p>
+<hr>
+<h1 id="struct和class的区别"><a href="#struct和class的区别" class="headerlink" title="struct和class的区别"></a>struct和class的区别</h1><hr>
+<p>C++ 中保留了C语言的 struct 关键字，并且加以扩充。在C语言中，struct 只能包含成员变量，不能包含成员函数。而在C++中，struct 类似于 class，既可以包含成员变量，又可以包含成员函数。<br>C++中的 struct 和 class 基本是通用的，唯有几个细节不同：<br>使用 class 时，类中的成员如果不声明，默认都是 private 属性的；而使用 struct 时，结构体中的成员默认都是 public 属性的。<br>class 继承默认是 private 继承，而 struct 继承默认是 public 继承<br>class 可以使用模板，而 struct 不能<br>struct更适合看成是一个数据结构的实现体，class更适合看成是一个对象的实现体。</p>
+<hr>
+<h1 id="define-和const的区别（编译阶段、安全性、内存占用等）"><a href="#define-和const的区别（编译阶段、安全性、内存占用等）" class="headerlink" title="define 和const的区别（编译阶段、安全性、内存占用等）"></a>define 和const的区别（编译阶段、安全性、内存占用等）</h1><hr>
+<p> 用#define MAX 255定义的常量是没有类型的，所给出的是一个立即数，编译器只是把所定义的常量值与所定义的常量的名字联系起来，define所定义的宏变量在预处理的时候进行替换，在程序中使用到该常量的地方都要进行拷贝替换；<br>用const float MAX = 255; 定义的常量有类型名字，存放在内存的静态区域中，在程序运行过程中const变量只有一个拷贝，而#define 所定义的宏变量却有多个拷贝，所以宏定义在程序运行过程中所消耗的内存要比const变量的大得多；<br> 用define定义的常量是不可以用指针变量去指向的，用const定义的常量是可以用指针去指向该常量的地址的；<br>用define可以定义一些简单的函数，const是不可以定义函数的.</p>
+<p><strong>1.编译器处理方式</strong><br>define – 在预处理阶段进行替换<br>const – 在编译时确定其值<br><strong>2.类型检查</strong><br>define – 无类型，不进行类型安全检查，可能会产生意想不到的错误<br>const – 有数据类型，编译时会进行类型检查<br><strong>3.内存空间</strong><br>define – 不分配内存，给出的是立即数，有多少次使用就进行多少次替换，在内存中会有多个拷贝，消耗内存大<br>const – 在静态存储区中分配空间，在程序运行过程中内存中只有一个拷贝<br><strong>4.其他</strong><br>在编译时， 编译器通常不为const常量分配存储空间，而是将它们保存在符号表中，这使得它成为一个编译期间的常量，没有了存储与读内存的操作，使得它的效率也很高。</p>
+<hr>
+<h1 id="在C-中const和static的用法（定义，用途）"><a href="#在C-中const和static的用法（定义，用途）" class="headerlink" title="在C++中const和static的用法（定义，用途）"></a>在C++中const和static的用法（定义，用途）</h1><hr>
+<p><strong>const</strong><br>用法：修饰变量，参数，返回值。 C++中的const关键字的用法非常灵活，而使用const将大大改善程序的健壮性。const 允许指定语义约束，告诉编译器哪些变量是不可以改变的。<br>修饰变量：C语言中const将一个变量转化为常变量，存储在静态文本段，只有读取权限，C++中同样会将一个变量转化成常量，C++会对其进行优化，将其放入寄存器中，如果想去内存中读取该数据时，我们可以使用volatile关键字进行修饰，保证其可见性。<br>修饰指针变量： 如果const位于* 左侧时，不能修改指针所指的对象<br>如果const位于* 右侧时，不能修改指针的指向，所以必须初始化。<br>修饰参数：作用是原参数在该函数中不可被改变。<br>修饰的返回值：也是用const来修饰返回的指针或引用，保护指针指向的内容或引用的内容不被修改，也常用于运算符重载。归根究底就是使得函数调用表达式不能作为左值。</p>
+<p><strong>static</strong><br>全局变量：修饰的全局变量，指定其内部链接，也就是只能本文件使用。<br>局部变量：修饰的局部变量，改变其生命周期，并不会修改器作用域。<br>普通函数：修饰的普通函数，指定其内部链接，也就是只能本文可见。</p>
+<hr>
+<h1 id="const和static在类中使用的注意事项（定义、初始化和使用）"><a href="#const和static在类中使用的注意事项（定义、初始化和使用）" class="headerlink" title="const和static在类中使用的注意事项（定义、初始化和使用）"></a>const和static在类中使用的注意事项（定义、初始化和使用）</h1><hr>
+<p>const定义的常量在超出其作用域之后其空间会被释放，而static定义的静态常量在函数执行后不会释放其存储空间。</p>
+<p>static表示的是静态的。类的静态成员函数、静态成员变量是和类相关的，而不是和类的具体对象相关的。即使没有具体对象，也能调用类的静态成员函数和成员变量。一般类的静态函数几乎就是一个全局函数，只不过它的作用域限于包含它的文件中。</p>
+<p>在C++中，static静态成员变量不能在类的内部初始化。在类的内部只是声明，定义必须在类定义体的外部，通常在类的实现文件中初始化，如：double Account::Rate=2.25;static关键字只能用于类定义体内部的声明中，定义时不能标示为static.</p>
+<p>在C++中，const成员变量也不能在类定义处初始化，只能通过构造函数初始化列表进行，并且必须有构造函数。</p>
+<p>const数据成员 只在某个对象生存期内是常量，而对于整个类而言却是可变的。因为类可以创建多个对象，不同的对象其const数据成员的值可以不同。所以不能在类的声明中初始化const数据成员，因为类的对象没被创建时，编译器不知道const数据成员的值是什么。</p>
+<p>const数据成员的初始化只能在类的构造函数的初始化列表中进行。要想建立在整个类中都恒定的常量，应该用类中的枚举常量来实现，或者static cosnt。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">class A  </span><br><span class="line">&#123;  </span><br><span class="line">public:  </span><br><span class="line">      A(int a);  </span><br><span class="line">      static void print();//静态成员函数  </span><br><span class="line">private:  </span><br><span class="line">      static int aa;//静态数据成员的声明  </span><br><span class="line">       static const int count;//常量静态数据成员（可以在构造函数中初始化）  </span><br><span class="line">       const int bb;//常量数据成员  </span><br><span class="line">&#125;;  </span><br><span class="line">int A::aa=0;//静态成员的定义+初始化  </span><br><span class="line">const int A::count=25;//静态常量成员定义+初始化  </span><br><span class="line">A::A(int a):bb(a)//常量成员的初始化  </span><br><span class="line">&#123;  </span><br><span class="line">      aa+=1;  </span><br><span class="line">&#125;  </span><br><span class="line">void A::print()  </span><br><span class="line">&#123;  </span><br><span class="line">      cout&lt;&lt;&quot;count=&quot;&lt;&lt;count&lt;&lt;endl;  </span><br><span class="line">      cout&lt;&lt;&quot;aa=&quot;&lt;&lt;aa&lt;&lt;endl;  </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line">void main()  </span><br><span class="line">&#123;  </span><br><span class="line">      A a(10);  </span><br><span class="line">      A::print();//通过类访问静态成员函数  </span><br><span class="line">      a.print();//通过对象访问静态成员函数  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>常量数据成员的初始化，只能在构造函数初始化列表中初始化     类名::构造函数:常量数据成员</strong></p>
+<hr>
+<h1 id="C-中的const类成员函数（用法和意义），以及和非const成员函数的区别"><a href="#C-中的const类成员函数（用法和意义），以及和非const成员函数的区别" class="headerlink" title="C++中的const类成员函数（用法和意义），以及和非const成员函数的区别"></a>C++中的const类成员函数（用法和意义），以及和非const成员函数的区别</h1><hr>
+<p>const 成员函数可以使用类中的所有成员变量，但是不能修改它们的值，这种措施主要还是为了保护数据而设置的。const 成员函数也称为常成员函数。<br>常成员函数需要在声明和定义的时候在函数头部的结尾加上 const 关键字<br>函数开头的 const 用来修饰函数的返回值，表示返回值是 const 类型，也就是不能被修改，例如const char * getname()。<br>函数头部的结尾加上 const 表示常成员函数，这种函数只能读取成员变量的值，而不能修改成员变量<br>的值，例如char * getname() const。</p>
+<hr>
+<h1 id="C-的顶层const和底层const"><a href="#C-的顶层const和底层const" class="headerlink" title="C++的顶层const和底层const"></a>C++的顶层const和底层const</h1><hr>
+<p>顶层const：const修饰指针本身<br>底层const：const修饰指针指向的那个内存数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">const int*p1 = &amp;a; //p1是底层const，通过p1不能改变p1指向的数据a。p1本身可变。</span><br><span class="line">int const*p2 = &amp;a; //同上，p2是底层const，通过p2不能改变p2指向的数据a。p2本身可变。</span><br><span class="line">int* const p3 = &amp;a; //p3是顶层const，p3本身不能改变，始终指向a，但是通过p3可以改变a的值</span><br><span class="line">const int* const p4 = &amp;a; //顶层const和底层const的结合。p4本身是const，且通过p4无法</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
       <categories>
-          
-          <category> 笔记 </category>
-          
-          <category> 面试 </category>
-          
+        <category>笔记</category>
+        <category>面试</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> c++ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>c++基本数据类型</title>
-      <link href="/2019/11/04/c++%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-      <url>/2019/11/04/c++%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr><p>记录c++中一些基本的数据类型。</p><hr><h1 id="基本内置类型"><a href="#基本内置类型" class="headerlink" title="基本内置类型"></a>基本内置类型</h1><table><thead><tr><th>类型</th><th>关键字</th></tr></thead><tbody><tr><td>布尔型</td><td>bool</td></tr><tr><td>字符型</td><td>char</td></tr><tr><td>整型</td><td>int</td></tr><tr><td>浮点型</td><td>float</td></tr><tr><td>双浮点型</td><td>double</td></tr><tr><td>无类型</td><td>void</td></tr><tr><td>宽字符型</td><td>wchar_t</td></tr></tbody></table><p>宽字符型<code>wcha_t</code>的定义：<br><code>typedef short int wchar_t;</code> </p><table><thead><tr><th>类型</th><th>所占字节数</th><th>最大值</th><th>最小值</th></tr></thead><tbody><tr><td>bool</td><td>1</td><td>1</td><td>0</td></tr><tr><td>char</td><td>1</td><td></td><td>€</td></tr><tr><td>signed char</td><td>1</td><td></td><td></td></tr><tr><td>unsigned char</td><td>1</td><td></td><td></td></tr><tr><td>wchar_t</td><td>2</td><td>65535</td><td>0</td></tr><tr><td>short</td><td>2</td><td>32767</td><td>-32768</td></tr><tr><td>int</td><td>4</td><td>2147483647</td><td>-2147483648</td></tr><tr><td>unsigned</td><td>4</td><td>4294967295</td><td>0</td></tr><tr><td>long</td><td>4</td><td>2147483647</td><td>-2147483648</td></tr><tr><td>unsigned long</td><td>4</td><td>4294967295</td><td>0</td></tr><tr><td>double</td><td>8</td><td>1.79769e+308</td><td>2.22507e-308</td></tr><tr><td>long double</td><td>8</td><td>1.79769e+308</td><td>2.22507e-308</td></tr><tr><td>float</td><td>4</td><td>3.40282e+38</td><td>1.17549e-38</td></tr><tr><td>size_t:</td><td>4</td><td>4294967295</td><td>0</td></tr><tr><td>long long</td><td>8</td><td>9223372036854775807</td><td></td></tr><tr><td></td><td></td><td></td><td>-9223372036854775808</td></tr><tr><td>string:</td><td>28</td><td></td><td></td></tr></tbody></table><hr><p>注意：以上不同操作系统和不同编译器的结果可能有差异。<br>unsigned 的存在与否决定数据的取值是否取负。</p><hr><h1 id="typedef声明"><a href="#typedef声明" class="headerlink" title="typedef声明"></a>typedef声明</h1><hr><p>typedef 为一个已有的类型取一个新的名字，常用于结构体的重命名。使用方式如下：<br><code>typedef 原名称  新名称;</code><br><code>typedef char new_char;</code></p><hr><h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>枚举类型(enumeration)是C++中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。</p><p>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。</p><p>创建枚举，需要使用关键字 enum。枚举类型的一般形式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum 枚举名&#123; </span><br><span class="line">     标识符[=整型常数], </span><br><span class="line">     标识符[=整型常数], </span><br><span class="line">... </span><br><span class="line">    标识符[=整型常数]</span><br><span class="line">&#125; 枚举变量;</span><br></pre></td></tr></table></figure><p>如果枚举没有初始化, 即省掉”=整型常数”时, 则从第一个标识符开始。</p><p>例如，下面的代码定义了一个颜色枚举，变量 c 的类型为 color。最后，c 被赋值为 “blue”。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum color &#123; red, green, blue &#125; c;</span><br><span class="line">c = blue;</span><br></pre></td></tr></table></figure><p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，green 的值为 5。</p><p><code>enum color { red, green=5, blue };</code><br>在这里，blue 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1，但 red 的值依然为 0。</p><hr>]]></content>
-      
-      
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c++基本数据类型</title>
+    <url>/2019/11/04/c++%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>记录c++中一些基本的数据类型。</p>
+<hr>
+<h1 id="基本内置类型"><a href="#基本内置类型" class="headerlink" title="基本内置类型"></a>基本内置类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>布尔型</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>int</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>float</td>
+</tr>
+<tr>
+<td>双浮点型</td>
+<td>double</td>
+</tr>
+<tr>
+<td>无类型</td>
+<td>void</td>
+</tr>
+<tr>
+<td>宽字符型</td>
+<td>wchar_t</td>
+</tr>
+</tbody></table>
+<p>宽字符型<code>wcha_t</code>的定义：<br><code>typedef short int wchar_t;</code> </p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>所占字节数</th>
+<th>最大值</th>
+<th>最小值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bool</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>char</td>
+<td>1</td>
+<td></td>
+<td>€</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>wchar_t</td>
+<td>2</td>
+<td>65535</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>32767</td>
+<td>-32768</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>2147483647</td>
+<td>-2147483648</td>
+</tr>
+<tr>
+<td>unsigned</td>
+<td>4</td>
+<td>4294967295</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4</td>
+<td>2147483647</td>
+<td>-2147483648</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>4</td>
+<td>4294967295</td>
+<td>0</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>1.79769e+308</td>
+<td>2.22507e-308</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>8</td>
+<td>1.79769e+308</td>
+<td>2.22507e-308</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>3.40282e+38</td>
+<td>1.17549e-38</td>
+</tr>
+<tr>
+<td>size_t:</td>
+<td>4</td>
+<td>4294967295</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>8</td>
+<td>9223372036854775807</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>-9223372036854775808</td>
+</tr>
+<tr>
+<td>string:</td>
+<td>28</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<p>注意：以上不同操作系统和不同编译器的结果可能有差异。<br>unsigned 的存在与否决定数据的取值是否取负。</p>
+<hr>
+<h1 id="typedef声明"><a href="#typedef声明" class="headerlink" title="typedef声明"></a>typedef声明</h1><hr>
+<p>typedef 为一个已有的类型取一个新的名字，常用于结构体的重命名。使用方式如下：<br><code>typedef 原名称  新名称;</code><br><code>typedef char new_char;</code></p>
+<hr>
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>枚举类型(enumeration)是C++中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。</p>
+<p>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。</p>
+<p>创建枚举，需要使用关键字 enum。枚举类型的一般形式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum 枚举名&#123; </span><br><span class="line">     标识符[=整型常数], </span><br><span class="line">     标识符[=整型常数], </span><br><span class="line">... </span><br><span class="line">    标识符[=整型常数]</span><br><span class="line">&#125; 枚举变量;</span><br></pre></td></tr></table></figure>
+
+<p>如果枚举没有初始化, 即省掉”=整型常数”时, 则从第一个标识符开始。</p>
+<p>例如，下面的代码定义了一个颜色枚举，变量 c 的类型为 color。最后，c 被赋值为 “blue”。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum color &#123; red, green, blue &#125; c;</span><br><span class="line">c = blue;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，green 的值为 5。</p>
+<p><code>enum color { red, green=5, blue };</code><br>在这里，blue 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1，但 red 的值依然为 0。</p>
+<hr>
+]]></content>
       <categories>
-          
-          <category> 笔记 </category>
-          
+        <category>笔记</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> c++ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>c++标准程序库——读书笔记（1）</title>
-      <link href="/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
-      <url>/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</url>
-      
-        <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><hr><p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器， algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。</p><hr><p>template  模板<br><code>template &lt;classT&gt;</code></p><hr><p>STL 的基本观念就是把<code>数据</code>和<code>操作</code>区分开，<code>数据</code>用<code>容器</code>管理，<code>操作</code>用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法: 处理集合内的元素。</p><hr><h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><hr><p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap，自动对容器内的元素进行排序</p><h2 id="容器的内置函数"><a href="#容器的内置函数" class="headerlink" title="容器的内置函数"></a>容器的内置函数</h2><hr><p>push_back()为容器附加元素<br>size()返回容器中元素的个数<br>push_front()在集群的前面添加元素个数<br>pop_front()会删除容器中的第一个元素但不会返<br>empty()判断容器是否为空<br>如果在vector容器中向头部添加元素，要移动所有元素，其时间复杂度很高，所以vector不提供该成员函数</p><hr><h2 id="序列式容器"><a href="#序列式容器" class="headerlink" title="序列式容器"></a>序列式容器</h2><hr><p><code>vector</code>允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时，必须挪动其他元素。<br><code>deque</code>可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时。<br><code>list</code>由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个元素。存取动作成线性变化<br><code>string</code>可以当作STL容器来使用，和<code>vector</code>类似，但其元素主要是字符<br><code>array</code>没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p><hr><h2 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h2><hr><p><code>sets</code>内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br><code>multisets</code>的特点与set相同，但其值允许重复。允许出现多次<br><code>maps</code>的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br><code>multimap</code>和<code>map</code>的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p><hr>]]></content>
-      
-      
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c++标准程序库——读书笔记（1）</title>
+    <url>/2019/11/03/c++%E6%A0%87%E5%87%86%E7%A8%8B%E5%BA%8F%E5%BA%93%E2%80%94%E2%80%94%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><hr>
+<p>STL  Standard Template Library 标准模板库<br>STL有6大组件：container 容器， algorithm  算法，  iterator  迭代器，  adapter  配接器，   functor   仿函数/函数对象，  allocator  配置器。</p>
+<hr>
+<p>template  模板<br><code>template &lt;classT&gt;</code></p>
+<hr>
+<p>STL 的基本观念就是把<code>数据</code>和<code>操作</code>区分开，<code>数据</code>用<code>容器</code>管理，<code>操作</code>用<code>算法</code>定义，而<code>迭代器</code>是两者之间的粘合剂。<br>容器：用来管理某类对象的集合<br>迭代器：遍历集合<br>算法: 处理集合内的元素。</p>
+<hr>
+<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><hr>
+<p>容器有两种类型：<br>序列式容器：每个元素均有固定的位置，取决于插入的时间和地点。vector，deque，list<br>关联式容器：元素位置取决于特定的排序准则。与插入次序无关。set，mutiset，map，mulitimap，自动对容器内的元素进行排序</p>
+<h2 id="容器的内置函数"><a href="#容器的内置函数" class="headerlink" title="容器的内置函数"></a>容器的内置函数</h2><hr>
+<p>push_back()为容器附加元素<br>size()返回容器中元素的个数<br>push_front()在集群的前面添加元素个数<br>pop_front()会删除容器中的第一个元素但不会返<br>empty()判断容器是否为空<br>如果在vector容器中向头部添加元素，要移动所有元素，其时间复杂度很高，所以vector不提供该成员函数</p>
+<hr>
+<h2 id="序列式容器"><a href="#序列式容器" class="headerlink" title="序列式容器"></a>序列式容器</h2><hr>
+<p><code>vector</code>允许元素随机存取，利用数组进行尾部元素的附加和移除，非常快速，但对数组中间和头部元素的操作就很费时，必须挪动其他元素。<br><code>deque</code>可以向两端发展，因此在头部或尾部安插元素十分容易，但在中部安插元素十分费时。<br><code>list</code>由双向链表实作，即链表中的每一个元素都有前趋元素和后继元素，不提供随机存取，想要对第十个元素操作必须依次扫描前九个元素。存取动作成线性变化<br><code>string</code>可以当作STL容器来使用，和<code>vector</code>类似，但其元素主要是字符<br><code>array</code>没有成员函数，有静态数组和动态数组，在写STL算法的时候可以使用</p>
+<hr>
+<h2 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h2><hr>
+<p><code>sets</code>内的值按照大小自动排序，但每个值只能出现一次。不允许重复<br><code>multisets</code>的特点与set相同，但其值允许重复。允许出现多次<br><code>maps</code>的元素都是由“键值/实值”所组成的一个个队组，键值是排序准则的基准，每一个键只允许出现一次。不允许重复<br><code>multimap</code>和<code>map</code>的使用相似，但允许出现重复的键值，可被当作字典使用。所有产品中，所有容器都是使用二叉树实作而成。</p>
+<hr>
+]]></content>
       <categories>
-          
-          <category> 笔记 </category>
-          
+        <category>笔记</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> c++ </tag>
-            
-            <tag> 标准库 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Next搭建个人相册</title>
-      <link href="/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/"/>
-      <url>/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/</url>
-      
-        <content type="html"><![CDATA[<hr><h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><hr><p>搭建博客的时候看到<a href="https://asdfv1929.github.io/" target="_blank" rel="noopener">这篇博客</a>,发现其中的相册功能蛮有意思的，想着不错哎能记录一下自己的经历，等自己回过头时候看蛮有意思的，一直也想做一个。可是我这人吧还比较贱，非得折磨自己，就一直一直找，终于我发现了<a href="https://co5.me/2018/181112-gallerry2.html#CSS%E6%A0%B7%E5%BC%8F" target="_blank" rel="noopener">这篇博客</a>,这位博主的教程写的都很全面了，但我还是遇到了坑，哈哈哈哈，我太笨了。</p><hr><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><hr><p>本节内容是基于实现本地保存图片功能前提记录的笔记，如果是用图床外链，可以跳过所有涉及到img文件夹以及img/s文件夹的步骤。</p><p>本相册的所有功能均仅测试了在hexo-theme-next下实现的效果，使用其它主题时部分布局尺寸数据可能会出现偏差，需要自行根据主      题设置修改。</p><hr><h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><hr><p>在 git bash 中输入命令hexo new page gallery；  （这里我建议把名字改成album或者photos）<br>在hexo/sourse/gallery目录下建立你需要的分类相册文件夹；<br>进入hexo/sourse/gallery目录，新建img文件夹用来存放相册封面；<br>在每个相册文件夹中创建img文件夹用来存放大图，以及img/s文件夹用来存放缩略图。<br>Ps. img/s文件夹可以省略不建，用文件名-s.jpg的格式重命名缩略图即可。<br>(这里我的大图是使用的外链，缩略图存放在文件里）</p><hr><h1 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h1><hr><h2 id="原图处理："><a href="#原图处理：" class="headerlink" title="原图处理："></a>原图处理：</h2><p>将需要上传的图片放入gallery/相册名/img文件夹中，为了加载速度建议压缩至 1mb 以下，使用 jpg 格式保存；<br>除了文件大小以外没有其它要求，但是为了方便后续页面编辑，建议将文件以容易辨识的方式重命名，例如日期-图片名.jpg。</p><hr><h2 id="缩略图处理："><a href="#缩略图处理：" class="headerlink" title="缩略图处理："></a>缩略图处理：</h2><hr><p>将gallery/相册名/img下的所有图片复制到gallery/相册名/img/s文件夹中，使用 PS 等其它处理工具压缩图片大小；<br>建议宽度为 300px，最终输出文件大小在 30kb 左右，高度无要求。</p><hr><h2 id="封面图处理"><a href="#封面图处理" class="headerlink" title="封面图处理"></a>封面图处理</h2><hr><p>从每个相册的缩略图中挑选需要的封面，复制到gallery/img文件夹中；<br>建议重命名为相册名.jpg。</p><hr><h1 id="相册主界面"><a href="#相册主界面" class="headerlink" title="相册主界面"></a>相册主界面</h1><hr><p> 打开gallery/index.md，将title设置成你需要的相册页面名称；<br> (可选）在日期下方加上comments: false关闭评论；<br> 复制以下代码粘贴至正文，并按需求修改相册描述、相册名、相册文件夹名以及封面图文件名：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;！相册描述【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;center&gt;自定义分隔符【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;div class=&quot;gallery-page&quot;&gt;</span><br><span class="line">&lt;div class=&quot;gallery-list&quot;&gt;</span><br><span class="line">&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">&lt;a href=&quot;【！相册文件夹名】&quot;&gt;&lt;img src=&quot;img/【！封面图文件名】.jpg&quot;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;p&gt;- ！相册1 -&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">&lt;a href=&quot;【！相册文件夹名】&quot;&gt;&lt;img src=&quot;img/【！封面图文件名】.jpg&quot;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;p&gt;- ！相册2 -&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">&lt;a href=&quot;sample&quot;&gt;&lt;img src=&quot;img/sample.jpg&quot;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;p&gt;- 相册名 -&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">&lt;a href=&quot;sample&quot;&gt;&lt;img src=&quot;img/sample.jpg&quot;&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;p&gt;- 相册名 -&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;center&gt;自定义分割线【此行可删除】&lt;/center&gt;</span><br></pre></td></tr></table></figure><p>Ps. 1. 需要使用外链的场合，将“img/【！封面图文件名】.jpg”和“”替换为图床外链地址即可；<br>Ps. 2. 代码中 <code>&lt;div class=&quot;gallery-column&quot;&gt;</code> 元素为分列显示相册的列数，可按需要增减；<br>Ps. 3. 新增相册时请确认代码添加在<code>&lt;div class=&quot;gallery-column&quot;&gt;</code>元素内部，否则会造成显示错误。<br>Ps. 4. 这里的相册文件名是你的分类相册的文件夹名</p><hr><hr><h1 id="分类相册界面"><a href="#分类相册界面" class="headerlink" title="分类相册界面"></a>分类相册界面</h1><p>打开gallery/相册名/index.md，将title设置成你需要的分类相册页面名称；<br>（可选）在日期下方加上comments: false关闭评论；<br>复制以下代码粘贴至正文，并按需求修改相册描述、图片名以及缩略图文件名：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;！相册描述【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;center&gt;自定义分隔符【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;div class=&quot;gallery-page&quot;&gt;</span><br><span class="line">&lt;div class=&quot;img-list&quot;&gt;</span><br><span class="line">&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">&lt;a href=&quot;img/【！图片名1】.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/【！缩略图文件名1】.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;img/【！图片名2】.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/【！缩略图文件名2】.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">&lt;a href=&quot;img/sample.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/sample.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">&lt;a href=&quot;img/sample.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/sample.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;center&gt;自定义分割线【此行可删除】&lt;/center&gt;</span><br></pre></td></tr></table></figure><p>Ps. 1. 需要使用外链的场合，将”img/【图片名】.jpg”替换为图床外链地址即可，如果图床加载速度够快可以用同一个链接填充缩略图部分；<br>Ps. 2. 代码中<code>&lt;div class=&quot;img-column&quot;&gt;</code>元素为分列显示图片的列数，可按需要增减；<br>Ps. 3. 添加图片时请确认代码添加在<code>&lt;div class=&quot;img-column&quot;&gt;</code>元素内部，否则会造成显示错误。</p><hr><h1 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h1><hr><p>在…\themes\next\source\css_custom\custom.styl中加入如下代码(如果没有，请新建):</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/*gallery*/</span><br><span class="line">/*相册标题距图片的位置*/</span><br><span class="line">.gallery-page &#123;</span><br><span class="line">margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.img-list,</span><br><span class="line">.gallery-list &#123;</span><br><span class="line">display: flex;</span><br><span class="line">flex-direction: row;   /*项目排列方向：列*/</span><br><span class="line">flex-wrap: nowrap;   /*是否换行*/</span><br><span class="line">align-items: flex-start;</span><br><span class="line">&#125;</span><br><span class="line">.img-column &#123;</span><br><span class="line">display: flex;</span><br><span class="line">flex-direction: column-reverse;</span><br><span class="line">&#125;</span><br><span class="line">/*样式*/</span><br><span class="line">.img-column a,</span><br><span class="line">.gallery-column a &#123;</span><br><span class="line">border-bottom: 0px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*相册名距评论框的位置*/</span><br><span class="line">.gallery-item &#123;</span><br><span class="line">margin-bottom: 50px;</span><br><span class="line">&#125;</span><br><span class="line">/*相册名框的位置*/</span><br><span class="line">.gallery-item p &#123;</span><br><span class="line">margin: 25px auto 10px;</span><br><span class="line">max-width: 50%;</span><br><span class="line">text-align: center;</span><br><span class="line">font-size: 15px;</span><br><span class="line">color: $black-deep;</span><br><span class="line">background: rgba(255,255,255,.3);</span><br><span class="line">border-radius: 7px;</span><br><span class="line">border: 1px solid $black-deep;</span><br><span class="line">box-shadow: 0 8px 20px -8px rgba(0,0,0,.3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*相册的封面大小*/</span><br><span class="line">.posts-expand .post-body .gallery-column a img &#123;</span><br><span class="line">height: 300px;</span><br><span class="line">width: 250px;</span><br><span class="line">object-fit: cover;</span><br><span class="line">&#125;</span><br><span class="line">@media (max-width: 767px)&#123;</span><br><span class="line">.gallery-item p &#123;</span><br><span class="line">min-width: 75px;</span><br><span class="line">font-size: 13px;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Ps. 1.<code>@media</code>标签内的样式是防止移动端浏览时相册名被强制换行的，建议保留；<br>Ps. 2. 其余样式除了 flex 相关行与object-fit样式以外，均可根据需要自行更改，在此不作赘述。</p><hr><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><hr><p>flex 布局：<br><a href="https://zhuanlan.zhihu.com/p/25303493" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25303493</a><br>CSS 裁剪：<br><a href="https://drkbl.com/css-responsable-image-cut-without-distort/" target="_blank" rel="noopener">https://drkbl.com/css-responsable-image-cut-without-distort/</a></p><hr><h1 id="模板文档"><a href="#模板文档" class="headerlink" title="模板文档"></a>模板文档</h1><hr><p>这里是这位博主在Google的模板文件和css样式，<a href="https://drive.google.com/open?id=1nu8gASxuMPjggUaPirRA_Vh07d8nGKpB" target="_blank" rel="noopener">点此下载</a>。包含了 CSS 样式代码文件和一个简单的 readme。<br>本文大部分转载自：<a href="https://co5.me/2018/181112-gallerry2.html" target="_blank" rel="noopener">https://co5.me/2018/181112-gallerry2.html</a></p><hr><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr><p>1.其实这种相册本质上就是没有文字只有图片的文章，再加一些页面布局，难点就是实现站内网页的跳转。但对我这种对前端一窍不通的小菜鸟来说已经帮助很大了，万分感谢。<br>2.如果你做完以上步骤之后，发现点击相册封面不能跳转图片只能放大的问题。找到<code>主题配置文件</code>的<code>fancybox</code>,将<code>enable</code>的值设置为<code>false</code>。<br>3.<code>href</code>访问站内文件需要进入站内文件的文件夹，实现站内页面跳转。</p><hr><p>感谢聚合图床：<a href="https://www.superbed.cn/" target="_blank" rel="noopener">https://www.superbed.cn/</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>c++</tag>
+        <tag>标准库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next搭建个人相册</title>
+    <url>/2019/10/27/Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%9B%B8%E5%86%8C/</url>
+    <content><![CDATA[<hr>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><hr>
+<p>搭建博客的时候看到<a href="https://asdfv1929.github.io/" target="_blank" rel="noopener">这篇博客</a>,发现其中的相册功能蛮有意思的，想着不错哎能记录一下自己的经历，等自己回过头时候看蛮有意思的，一直也想做一个。可是我这人吧还比较贱，非得折磨自己，就一直一直找，终于我发现了<a href="https://co5.me/2018/181112-gallerry2.html#CSS%E6%A0%B7%E5%BC%8F" target="_blank" rel="noopener">这篇博客</a>,这位博主的教程写的都很全面了，但我还是遇到了坑，哈哈哈哈，我太笨了。</p>
+<hr>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><hr>
+<p>本节内容是基于实现本地保存图片功能前提记录的笔记，如果是用图床外链，可以跳过所有涉及到img文件夹以及img/s文件夹的步骤。</p>
+<p>本相册的所有功能均仅测试了在hexo-theme-next下实现的效果，使用其它主题时部分布局尺寸数据可能会出现偏差，需要自行根据主      题设置修改。</p>
+<hr>
+<h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><hr>
+<p>在 git bash 中输入命令hexo new page gallery；  （这里我建议把名字改成album或者photos）<br>在hexo/sourse/gallery目录下建立你需要的分类相册文件夹；<br>进入hexo/sourse/gallery目录，新建img文件夹用来存放相册封面；<br>在每个相册文件夹中创建img文件夹用来存放大图，以及img/s文件夹用来存放缩略图。<br>Ps. img/s文件夹可以省略不建，用文件名-s.jpg的格式重命名缩略图即可。<br>(这里我的大图是使用的外链，缩略图存放在文件里）</p>
+<hr>
+<h1 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h1><hr>
+<h2 id="原图处理："><a href="#原图处理：" class="headerlink" title="原图处理："></a>原图处理：</h2><p>将需要上传的图片放入gallery/相册名/img文件夹中，为了加载速度建议压缩至 1mb 以下，使用 jpg 格式保存；<br>除了文件大小以外没有其它要求，但是为了方便后续页面编辑，建议将文件以容易辨识的方式重命名，例如日期-图片名.jpg。</p>
+<hr>
+<h2 id="缩略图处理："><a href="#缩略图处理：" class="headerlink" title="缩略图处理："></a>缩略图处理：</h2><hr>
+<p>将gallery/相册名/img下的所有图片复制到gallery/相册名/img/s文件夹中，使用 PS 等其它处理工具压缩图片大小；<br>建议宽度为 300px，最终输出文件大小在 30kb 左右，高度无要求。</p>
+<hr>
+<h2 id="封面图处理"><a href="#封面图处理" class="headerlink" title="封面图处理"></a>封面图处理</h2><hr>
+<p>从每个相册的缩略图中挑选需要的封面，复制到gallery/img文件夹中；<br>建议重命名为相册名.jpg。</p>
+<hr>
+<h1 id="相册主界面"><a href="#相册主界面" class="headerlink" title="相册主界面"></a>相册主界面</h1><hr>
+<p> 打开gallery/index.md，将title设置成你需要的相册页面名称；<br> (可选）在日期下方加上comments: false关闭评论；<br> 复制以下代码粘贴至正文，并按需求修改相册描述、相册名、相册文件夹名以及封面图文件名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;center&gt;！相册描述【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;center&gt;自定义分隔符【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;div class=&quot;gallery-page&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;gallery-list&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;【！相册文件夹名】&quot;&gt;&lt;img src=&quot;img/【！封面图文件名】.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- ！相册1 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;【！相册文件夹名】&quot;&gt;&lt;img src=&quot;img/【！封面图文件名】.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- ！相册2 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;sample&quot;&gt;&lt;img src=&quot;img/sample.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- 相册名 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;gallery-column&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;gallery-item&quot;&gt;</span><br><span class="line">				&lt;a href=&quot;sample&quot;&gt;&lt;img src=&quot;img/sample.jpg&quot;&gt;</span><br><span class="line">				&lt;/a&gt;</span><br><span class="line">				&lt;p&gt;- 相册名 -&lt;/p&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;center&gt;自定义分割线【此行可删除】&lt;/center&gt;</span><br></pre></td></tr></table></figure>
+<p>Ps. 1. 需要使用外链的场合，将“img/【！封面图文件名】.jpg”和“”替换为图床外链地址即可；<br>Ps. 2. 代码中 <code>&lt;div class=&quot;gallery-column&quot;&gt;</code> 元素为分列显示相册的列数，可按需要增减；<br>Ps. 3. 新增相册时请确认代码添加在<code>&lt;div class=&quot;gallery-column&quot;&gt;</code>元素内部，否则会造成显示错误。<br>Ps. 4. 这里的相册文件名是你的分类相册的文件夹名</p>
+<hr>
+<hr>
+<h1 id="分类相册界面"><a href="#分类相册界面" class="headerlink" title="分类相册界面"></a>分类相册界面</h1><p>打开gallery/相册名/index.md，将title设置成你需要的分类相册页面名称；<br>（可选）在日期下方加上comments: false关闭评论；<br>复制以下代码粘贴至正文，并按需求修改相册描述、图片名以及缩略图文件名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;center&gt;！相册描述【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;center&gt;自定义分隔符【此行可删除】&lt;/center&gt;</span><br><span class="line">&lt;div class=&quot;gallery-page&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;img-list&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">			&lt;a href=&quot;img/【！图片名1】.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/【！缩略图文件名1】.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">			&lt;a href=&quot;img/【！图片名2】.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/【！缩略图文件名2】.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">			&lt;a href=&quot;img/sample.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/sample.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;img-column&quot;&gt;</span><br><span class="line">			&lt;a href=&quot;img/sample.jpg&quot; target=&quot;_Blank&quot;&gt;&lt;img src=&quot;img/s/sample.jpg&quot;&gt;&lt;/a&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;center&gt;自定义分割线【此行可删除】&lt;/center&gt;</span><br></pre></td></tr></table></figure>
+<p>Ps. 1. 需要使用外链的场合，将”img/【图片名】.jpg”替换为图床外链地址即可，如果图床加载速度够快可以用同一个链接填充缩略图部分；<br>Ps. 2. 代码中<code>&lt;div class=&quot;img-column&quot;&gt;</code>元素为分列显示图片的列数，可按需要增减；<br>Ps. 3. 添加图片时请确认代码添加在<code>&lt;div class=&quot;img-column&quot;&gt;</code>元素内部，否则会造成显示错误。</p>
+<hr>
+<h1 id="CSS-样式"><a href="#CSS-样式" class="headerlink" title="CSS 样式"></a>CSS 样式</h1><hr>
+<p>在…\themes\next\source\css_custom\custom.styl中加入如下代码(如果没有，请新建):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">/*gallery*/</span><br><span class="line">/*相册标题距图片的位置*/</span><br><span class="line">.gallery-page &#123;</span><br><span class="line">	margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.img-list,</span><br><span class="line">.gallery-list &#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	flex-direction: row;   /*项目排列方向：列*/</span><br><span class="line">	flex-wrap: nowrap;   /*是否换行*/</span><br><span class="line">	align-items: flex-start;</span><br><span class="line">&#125;</span><br><span class="line">.img-column &#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	flex-direction: column-reverse;</span><br><span class="line">&#125;</span><br><span class="line">/*样式*/</span><br><span class="line">.img-column a,</span><br><span class="line">.gallery-column a &#123;</span><br><span class="line">	border-bottom: 0px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*相册名距评论框的位置*/</span><br><span class="line">.gallery-item &#123;</span><br><span class="line">	margin-bottom: 50px;</span><br><span class="line">&#125;</span><br><span class="line">/*相册名框的位置*/</span><br><span class="line">.gallery-item p &#123;</span><br><span class="line">	margin: 25px auto 10px;</span><br><span class="line">	max-width: 50%;</span><br><span class="line">	text-align: center;</span><br><span class="line">	font-size: 15px;</span><br><span class="line">	color: $black-deep;</span><br><span class="line">	background: rgba(255,255,255,.3);</span><br><span class="line">	border-radius: 7px;</span><br><span class="line">	border: 1px solid $black-deep;</span><br><span class="line">	box-shadow: 0 8px 20px -8px rgba(0,0,0,.3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*相册的封面大小*/</span><br><span class="line">.posts-expand .post-body .gallery-column a img &#123;</span><br><span class="line">	height: 300px;</span><br><span class="line">	width: 250px;</span><br><span class="line">	object-fit: cover;</span><br><span class="line">&#125;</span><br><span class="line">@media (max-width: 767px)&#123;</span><br><span class="line">	.gallery-item p &#123;</span><br><span class="line">		min-width: 75px;</span><br><span class="line">		font-size: 13px;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Ps. 1.<code>@media</code>标签内的样式是防止移动端浏览时相册名被强制换行的，建议保留；<br>Ps. 2. 其余样式除了 flex 相关行与object-fit样式以外，均可根据需要自行更改，在此不作赘述。</p>
+<hr>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><hr>
+<p>flex 布局：<br><a href="https://zhuanlan.zhihu.com/p/25303493" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25303493</a><br>CSS 裁剪：<br><a href="https://drkbl.com/css-responsable-image-cut-without-distort/" target="_blank" rel="noopener">https://drkbl.com/css-responsable-image-cut-without-distort/</a></p>
+<hr>
+<h1 id="模板文档"><a href="#模板文档" class="headerlink" title="模板文档"></a>模板文档</h1><hr>
+<p>这里是这位博主在Google的模板文件和css样式，<a href="https://drive.google.com/open?id=1nu8gASxuMPjggUaPirRA_Vh07d8nGKpB" target="_blank" rel="noopener">点此下载</a>。包含了 CSS 样式代码文件和一个简单的 readme。<br>本文大部分转载自：<a href="https://co5.me/2018/181112-gallerry2.html" target="_blank" rel="noopener">https://co5.me/2018/181112-gallerry2.html</a></p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>1.其实这种相册本质上就是没有文字只有图片的文章，再加一些页面布局，难点就是实现站内网页的跳转。但对我这种对前端一窍不通的小菜鸟来说已经帮助很大了，万分感谢。<br>2.如果你做完以上步骤之后，发现点击相册封面不能跳转图片只能放大的问题。找到<code>主题配置文件</code>的<code>fancybox</code>,将<code>enable</code>的值设置为<code>false</code>。<br>3.<code>href</code>访问站内文件需要进入站内文件的文件夹，实现站内页面跳转。</p>
+<hr>
+<p>感谢聚合图床：<a href="https://www.superbed.cn/" target="_blank" rel="noopener">https://www.superbed.cn/</a></p>
+]]></content>
       <categories>
-          
-          <category> 教程 </category>
-          
+        <category>教程</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> next </tag>
-            
-            <tag> 相册 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>html调用桌面exe程序</title>
-      <link href="/2019/10/24/html%E8%B0%83%E7%94%A8%E6%A1%8C%E9%9D%A2exe%E7%A8%8B%E5%BA%8F/"/>
-      <url>/2019/10/24/html%E8%B0%83%E7%94%A8%E6%A1%8C%E9%9D%A2exe%E7%A8%8B%E5%BA%8F/</url>
-      
-        <content type="html"><![CDATA[<p>自己做了一个本地网页，懒癌发作，想在网页上打开桌面程序，省事。</p><hr><h1 id="记事本"><a href="#记事本" class="headerlink" title="记事本"></a>记事本</h1><hr><p>使用记事本（或其他文本编辑器）创建一个protocal.reg文件，并写入以下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell]</span><br><span class="line">@=&quot;URL:myWebshell Protocol Handler&quot;</span><br><span class="line">&quot;URL Protocol&quot;=&quot;&quot;</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\DefaultIcon]</span><br><span class="line">@=&quot;D:\\Program Files (x86)\\Tencent\\TIM\\Bin\\QQScLauncher.exe&quot;</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\shell]</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\shell\open]</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\shell\open\command]</span><br><span class="line">@=&quot;\&quot;D:\\Program Files (x86)\\Tencent\\TIM\\Bin\\QQScLauncher.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure><h1 id="修改参数"><a href="#修改参数" class="headerlink" title="修改参数"></a>修改参数</h1><hr><p>使用记事本打开文件后，按照下图说明修改相关参数</p><hr><h1 id="修改连接名称"><a href="#修改连接名称" class="headerlink" title="修改连接名称"></a>修改连接名称</h1><hr><p>修改红框内名称自定义即可，全部使用英文字符（该名称即为调用时的href），共六处</p><p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204530150-489284719.png" alt="avatar"></p><hr><h1 id="修改可执行文件路径"><a href="#修改可执行文件路径" class="headerlink" title="修改可执行文件路径"></a>修改可执行文件路径</h1><hr><p>修改红框内可执行文件路径，共两处，需注意：文件路径中使用//分割</p><p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204616750-1601479535.png" alt="avatar"></p><hr><h1 id="执行protocal-reg文件"><a href="#执行protocal-reg文件" class="headerlink" title="执行protocal.reg文件"></a>执行protocal.reg文件</h1><hr><p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204645049-1592308303.png" alt="avatar"></p><hr><h1 id="创建调用连接"><a href="#创建调用连接" class="headerlink" title="创建调用连接"></a>创建调用连接</h1><hr><p>连接地址为 步骤1中所命名的链接名称，后面加://hello，（hello为传递参数，可任意添加）</p><p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204735245-1699216601.png" alt="avatar"></p><hr><h1 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h1><hr><p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204851156-549519043.png" alt="avatar"></p><p>本文转载自：<a href="https://www.cnblogs.com/hg-super-man/p/10651418.html" target="_blank" rel="noopener">https://www.cnblogs.com/hg-super-man/p/10651418.html</a></p><hr><h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><hr><p>写一点收获，markdown插入图片的方法 ![avatar] ()括号里填网络地址，这种方法非常依赖网络。<br> <img src="https://cdn.akc.org/akcdoglovers/Samoyed_hero1.jpg" alt="avatar"><br> 图片来源于网络，如有侵权，请联系我删除！</p><hr>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+        <tag>next</tag>
+        <tag>相册</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html调用桌面exe程序</title>
+    <url>/2019/10/24/html%E8%B0%83%E7%94%A8%E6%A1%8C%E9%9D%A2exe%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<p>自己做了一个本地网页，懒癌发作，想在网页上打开桌面程序，省事。</p>
+<hr>
+<h1 id="记事本"><a href="#记事本" class="headerlink" title="记事本"></a>记事本</h1><hr>
+<p>使用记事本（或其他文本编辑器）创建一个protocal.reg文件，并写入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell]</span><br><span class="line">@=&quot;URL:myWebshell Protocol Handler&quot;</span><br><span class="line">&quot;URL Protocol&quot;=&quot;&quot;</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\DefaultIcon]</span><br><span class="line">@=&quot;D:\\Program Files (x86)\\Tencent\\TIM\\Bin\\QQScLauncher.exe&quot;</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\shell]</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\shell\open]</span><br><span class="line">[HKEY_CLASSES_ROOT\myWebshell\shell\open\command]</span><br><span class="line">@=&quot;\&quot;D:\\Program Files (x86)\\Tencent\\TIM\\Bin\\QQScLauncher.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="修改参数"><a href="#修改参数" class="headerlink" title="修改参数"></a>修改参数</h1><hr>
+<p>使用记事本打开文件后，按照下图说明修改相关参数</p>
+<hr>
+<h1 id="修改连接名称"><a href="#修改连接名称" class="headerlink" title="修改连接名称"></a>修改连接名称</h1><hr>
+<p>修改红框内名称自定义即可，全部使用英文字符（该名称即为调用时的href），共六处</p>
+<p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204530150-489284719.png" alt="avatar"></p>
+<hr>
+<h1 id="修改可执行文件路径"><a href="#修改可执行文件路径" class="headerlink" title="修改可执行文件路径"></a>修改可执行文件路径</h1><hr>
+<p>修改红框内可执行文件路径，共两处，需注意：文件路径中使用//分割</p>
+<p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204616750-1601479535.png" alt="avatar"></p>
+<hr>
+<h1 id="执行protocal-reg文件"><a href="#执行protocal-reg文件" class="headerlink" title="执行protocal.reg文件"></a>执行protocal.reg文件</h1><hr>
+<p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204645049-1592308303.png" alt="avatar"></p>
+<hr>
+<h1 id="创建调用连接"><a href="#创建调用连接" class="headerlink" title="创建调用连接"></a>创建调用连接</h1><hr>
+<p>连接地址为 步骤1中所命名的链接名称，后面加://hello，（hello为传递参数，可任意添加）</p>
+<p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204735245-1699216601.png" alt="avatar"></p>
+<hr>
+<h1 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h1><hr>
+<p><img src="https://img2018.cnblogs.com/blog/1418786/201904/1418786-20190403204851156-549519043.png" alt="avatar"></p>
+<p>本文转载自：<a href="https://www.cnblogs.com/hg-super-man/p/10651418.html" target="_blank" rel="noopener">https://www.cnblogs.com/hg-super-man/p/10651418.html</a></p>
+<hr>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><hr>
+<p>写一点收获，markdown插入图片的方法 ![avatar] ()括号里填网络地址，这种方法非常依赖网络。<br> <img src="https://cdn.akc.org/akcdoglovers/Samoyed_hero1.jpg" alt="avatar"><br> 图片来源于网络，如有侵权，请联系我删除！</p>
+<hr>
+]]></content>
       <categories>
-          
-          <category> 教程 </category>
-          
+        <category>教程</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>大数相加</title>
-      <link href="/2019/10/24/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0/"/>
-      <url>/2019/10/24/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr><p>大数相加,主要有两种思路，一种是利用字符串实现，一种是利用链表实现。</p><hr><h1 id="字符串实现"><a href="#字符串实现" class="headerlink" title="字符串实现"></a>字符串实现</h1><hr><p>利用字符串主要思想是把大数当做字符串，倒序相加，产生进位要+1；结果存入一个新的字符串，用push_back()压入。因为大数的长度不一，那么就需要创建新的字符串的时候用’0’补齐，结果输出的时候不要忘记倒序输出。还有要注意的一点是字符串运算的是用ASCII码，不管是相加相减都要注意“0”，相加相减相乘都同理.</p><hr><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="built_in">string</span> s1, s2, s4;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入第一个数："</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">getline(<span class="built_in">cin</span>, s1);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入第二个数："</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">getline(<span class="built_in">cin</span>, s2);</span><br><span class="line">len = <span class="built_in">abs</span>(<span class="keyword">int</span>(s1.size() - s2.size()));</span><br><span class="line"></span><br><span class="line"><span class="comment">//中间字符串的创建</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s3</span><span class="params">(len, <span class="string">'0'</span>)</span></span>;       </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//输入的字串长度比较</span></span><br><span class="line"><span class="keyword">if</span> (s1.size() &gt; s2.size())</span><br><span class="line">&#123;</span><br><span class="line">s3 = s3 + s2;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = s3.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> m = (((s3[i] - <span class="string">'0'</span>) + (s1[i] - <span class="string">'0'</span>))) + b;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (m &gt; <span class="number">9</span>)</span><br><span class="line">&#123;</span><br><span class="line">s4.push_back((m - <span class="number">10</span>) + <span class="string">'0'</span>);</span><br><span class="line">b = <span class="number">1</span>;</span><br><span class="line">a++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">s4.push_back(m + <span class="string">'0'</span>);</span><br><span class="line">a++;</span><br><span class="line">b = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (s1.size() == s2.size())</span><br><span class="line">&#123;</span><br><span class="line">s3 = s1;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = s3.size()<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> m = (((s3[i] -<span class="string">'0'</span>) + (s2[i] - <span class="string">'0'</span>))) + b;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (m &gt; <span class="number">9</span>)</span><br><span class="line">&#123;</span><br><span class="line">s4.push_back((m  - <span class="number">10</span>)+<span class="string">'0'</span>);</span><br><span class="line">b = <span class="number">1</span>;</span><br><span class="line">a++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">s4.push_back(m+<span class="string">'0'</span>);</span><br><span class="line">a++;</span><br><span class="line">b = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">s3 = s3 + s1;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = s3.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> m = (((s3[i] - <span class="string">'0'</span>) + (s2[i] - <span class="string">'0'</span>))) + b;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (m &gt; <span class="number">9</span>)</span><br><span class="line">&#123;</span><br><span class="line">s4.push_back((m - <span class="number">10</span>) + <span class="string">'0'</span>);</span><br><span class="line">b = <span class="number">1</span>;</span><br><span class="line">a++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">s4.push_back(m + <span class="string">'0'</span>);</span><br><span class="line">a++;</span><br><span class="line">b = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意结果的倒序输出</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"结果是："</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = s4.size()<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; s4[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h1 id="链表实现"><a href="#链表实现" class="headerlink" title="链表实现"></a>链表实现</h1><hr><p>这里是利用单链表实现，首先新建一个单链表,然后将数字压入单链表，逆置，计算。这里要注意，得到的结果是逆置的，不要忘记纠正。</p><hr><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//创建一个单链表结点类型</span><br><span class="line">struct SingleList</span><br><span class="line">&#123;</span><br><span class="line">int Data;                             //数据域</span><br><span class="line">SingleList* Next;                     //指针域</span><br><span class="line">int n;</span><br><span class="line">&#125;;</span><br><span class="line">void output(SingleList *L, int n)       //单链表的输出</span><br><span class="line">&#123;</span><br><span class="line">SingleList* p = new SingleList;</span><br><span class="line">SingleList* q = new SingleList;</span><br><span class="line">cout &lt;&lt; &quot;该链表的长度是&quot; &lt;&lt; L-&gt;Data &lt;&lt; endl;</span><br><span class="line">p = L-&gt;Next;</span><br><span class="line">for (int i = 0; i &lt; n; ++i)</span><br><span class="line">&#123;</span><br><span class="line">cout &lt;&lt; p-&gt;Data &lt;&lt; &quot;  &quot;;</span><br><span class="line">q = p-&gt;Next;</span><br><span class="line">p = q;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">SingleList Initlist(SingleList* L, int n)    //尾插法</span><br><span class="line">&#123;</span><br><span class="line">SingleList* p = new SingleList;</span><br><span class="line">p = L;</span><br><span class="line">p-&gt;Data = n;</span><br><span class="line">for (int i = 0; i &lt; n; ++i)</span><br><span class="line">&#123;</span><br><span class="line">int d;</span><br><span class="line">cin &gt;&gt; d;</span><br><span class="line">SingleList* q = new SingleList;</span><br><span class="line">p-&gt;Next = q;</span><br><span class="line">q-&gt;Data = d;</span><br><span class="line">p = q;</span><br><span class="line">&#125;</span><br><span class="line">return *L;</span><br><span class="line">&#125;</span><br><span class="line">void sum(SingleList* L1, SingleList* L2, int length,SingleList *Sum)      //求和</span><br><span class="line">&#123;</span><br><span class="line">SingleList* p1 = new SingleList;</span><br><span class="line">SingleList* p2 = new SingleList;</span><br><span class="line">SingleList* s1 = new SingleList;</span><br><span class="line">SingleList* s = new SingleList;</span><br><span class="line">SingleList* q1 = new SingleList;</span><br><span class="line">SingleList* q2 = new SingleList;</span><br><span class="line">p1 = L1-&gt;Next;</span><br><span class="line">p2 = L2-&gt;Next;</span><br><span class="line">Sum-&gt;Data = length;</span><br><span class="line">s1 = Sum;</span><br><span class="line">//Sum-&gt;Data = 0;</span><br><span class="line">int a = 0;</span><br><span class="line">for (int i = 0; i &lt;length; ++i)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">if ((p1-&gt;Data + p2-&gt;Data) &gt;= 10)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">SingleList* s2 = new SingleList;</span><br><span class="line"></span><br><span class="line">s1-&gt;Next = s2;</span><br><span class="line">q1 = p1-&gt;Next;</span><br><span class="line">q2 = p2-&gt;Next;</span><br><span class="line">s2-&gt;Data = p1-&gt;Data + p2-&gt;Data - 10 + a;</span><br><span class="line">s1 = s2;</span><br><span class="line">p1 = q1;</span><br><span class="line">p2 = q2;</span><br><span class="line">a = 1;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">SingleList* s2 = new SingleList;</span><br><span class="line">s1-&gt;Next = s2;</span><br><span class="line">q1 = p1-&gt;Next;</span><br><span class="line">q2 = p2-&gt;Next;</span><br><span class="line">s2-&gt;Data = p1-&gt;Data + p2-&gt;Data + a;</span><br><span class="line">s1 = s2;</span><br><span class="line">p1 = q1;</span><br><span class="line">p2 = q2;</span><br><span class="line">a = 0;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">//return Sum-&gt;Data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SingleList become(SingleList* L,int  len,SingleList *M)     //逆置单链表</span><br><span class="line">&#123;</span><br><span class="line">SingleList* p = new SingleList;</span><br><span class="line">SingleList* q = new SingleList;</span><br><span class="line">SingleList* l = new SingleList;</span><br><span class="line">q = M;</span><br><span class="line">M-&gt;Data = L-&gt;Data;</span><br><span class="line">l = L;</span><br><span class="line">for (int j = len; j &gt; 0; --j)</span><br><span class="line">&#123;</span><br><span class="line">for (int i = 0; i &lt; j; ++i)</span><br><span class="line">&#123;</span><br><span class="line">p = l-&gt;Next;</span><br><span class="line">l = p;</span><br><span class="line">&#125;</span><br><span class="line">SingleList* o = new SingleList;</span><br><span class="line"></span><br><span class="line">q-&gt;Next = o;</span><br><span class="line">o-&gt;Data = p-&gt;Data;</span><br><span class="line">q = o;</span><br><span class="line">l = L;</span><br><span class="line">&#125;</span><br><span class="line">return *M;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">SingleList* L1 = new SingleList, * L2 = new SingleList;  //创建单链表</span><br><span class="line">SingleList* M1 = new SingleList, * M2 = new SingleList; </span><br><span class="line">SingleList* Sum1 = new SingleList, * Sum2 = new SingleList;//逆置后的单链表</span><br><span class="line">int len1, len2;                                          //两个链表长度</span><br><span class="line">int new_len;</span><br><span class="line">int length;</span><br><span class="line">cout &lt;&lt; &quot;请输入L1链表的长度：&quot;;</span><br><span class="line">cin &gt;&gt; len1;</span><br><span class="line">cout &lt;&lt; &quot;请输入L2链表的长度：&quot;;</span><br><span class="line">cin &gt;&gt; len2;</span><br><span class="line">L1-&gt;Data = len1;</span><br><span class="line">L2-&gt;Data = len2;</span><br><span class="line">int target;</span><br><span class="line">cout &lt;&lt; &quot;请输入L1的数字：&quot;;</span><br><span class="line">Initlist(L1, len1);                             //链表初始化</span><br><span class="line">cout &lt;&lt; &quot;请输入L2的数字：&quot;;</span><br><span class="line">Initlist(L2, len2);</span><br><span class="line">output (L1, len1);                              //打印链表</span><br><span class="line">output(L2, len1);</span><br><span class="line">become(L1, len1, M1);                            //逆置</span><br><span class="line">become(L2, len2, M2);</span><br><span class="line">output(M1, len1);</span><br><span class="line">output(M2, len2);</span><br><span class="line"></span><br><span class="line">if (len1 &gt; len2)</span><br><span class="line">&#123;</span><br><span class="line">length = len1;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">length = len2;</span><br><span class="line">&#125;</span><br><span class="line">sum(M1, M2, length, Sum1);                           //求和</span><br><span class="line">output(Sum1, length);</span><br><span class="line">become(Sum1, length, Sum2);</span><br><span class="line">output(Sum2, length);</span><br><span class="line">system(&quot;pause&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p>暂时没有实现最高位产生进位和不同位数相加。</p><hr>]]></content>
-      
-      
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大数相加</title>
+    <url>/2019/10/24/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>大数相加,主要有两种思路，一种是利用字符串实现，一种是利用链表实现。</p>
+<hr>
+<h1 id="字符串实现"><a href="#字符串实现" class="headerlink" title="字符串实现"></a>字符串实现</h1><hr>
+<p>利用字符串主要思想是把大数当做字符串，倒序相加，产生进位要+1；结果存入一个新的字符串，用push_back()压入。因为大数的长度不一，那么就需要创建新的字符串的时候用’0’补齐，结果输出的时候不要忘记倒序输出。还有要注意的一点是字符串运算的是用ASCII码，不管是相加相减都要注意“0”，相加相减相乘都同理.</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> s1, s2, s4;</span><br><span class="line">	<span class="keyword">int</span> len;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入第一个数："</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	getline(<span class="built_in">cin</span>, s1);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入第二个数："</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	getline(<span class="built_in">cin</span>, s2);</span><br><span class="line">	len = <span class="built_in">abs</span>(<span class="keyword">int</span>(s1.size() - s2.size()));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//中间字符串的创建</span></span><br><span class="line">	<span class="function"><span class="built_in">string</span> <span class="title">s3</span><span class="params">(len, <span class="string">'0'</span>)</span></span>;       </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//输入的字串长度比较</span></span><br><span class="line">	<span class="keyword">if</span> (s1.size() &gt; s2.size())</span><br><span class="line">	&#123;</span><br><span class="line">		s3 = s3 + s2;</span><br><span class="line">		<span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = s3.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> m = (((s3[i] - <span class="string">'0'</span>) + (s1[i] - <span class="string">'0'</span>))) + b;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> (m &gt; <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				s4.push_back((m - <span class="number">10</span>) + <span class="string">'0'</span>);</span><br><span class="line">				b = <span class="number">1</span>;</span><br><span class="line">				a++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				s4.push_back(m + <span class="string">'0'</span>);</span><br><span class="line">				a++;</span><br><span class="line">				b = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (s1.size() == s2.size())</span><br><span class="line">	&#123;</span><br><span class="line">		s3 = s1;</span><br><span class="line">		<span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = s3.size()<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> m = (((s3[i] -<span class="string">'0'</span>) + (s2[i] - <span class="string">'0'</span>))) + b;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> (m &gt; <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				s4.push_back((m  - <span class="number">10</span>)+<span class="string">'0'</span>);</span><br><span class="line">				b = <span class="number">1</span>;</span><br><span class="line">				a++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				s4.push_back(m+<span class="string">'0'</span>);</span><br><span class="line">				a++;</span><br><span class="line">				b = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		s3 = s3 + s1;</span><br><span class="line">		<span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = s3.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> m = (((s3[i] - <span class="string">'0'</span>) + (s2[i] - <span class="string">'0'</span>))) + b;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> (m &gt; <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				s4.push_back((m - <span class="number">10</span>) + <span class="string">'0'</span>);</span><br><span class="line">				b = <span class="number">1</span>;</span><br><span class="line">				a++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				s4.push_back(m + <span class="string">'0'</span>);</span><br><span class="line">				a++;</span><br><span class="line">				b = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//注意结果的倒序输出</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"结果是："</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = s4.size()<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; s4[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="链表实现"><a href="#链表实现" class="headerlink" title="链表实现"></a>链表实现</h1><hr>
+<p>这里是利用单链表实现，首先新建一个单链表,然后将数字压入单链表，逆置，计算。这里要注意，得到的结果是逆置的，不要忘记纠正。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//创建一个单链表结点类型</span><br><span class="line">struct SingleList</span><br><span class="line">&#123;</span><br><span class="line">	int Data;                             //数据域</span><br><span class="line">	SingleList* Next;                     //指针域</span><br><span class="line">	int n;</span><br><span class="line">&#125;;</span><br><span class="line">void output(SingleList *L, int n)       //单链表的输出</span><br><span class="line">&#123;</span><br><span class="line">	SingleList* p = new SingleList;</span><br><span class="line">	SingleList* q = new SingleList;</span><br><span class="line">	cout &lt;&lt; &quot;该链表的长度是&quot; &lt;&lt; L-&gt;Data &lt;&lt; endl;</span><br><span class="line">	p = L-&gt;Next;</span><br><span class="line">	for (int i = 0; i &lt; n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; p-&gt;Data &lt;&lt; &quot;  &quot;;</span><br><span class="line">		q = p-&gt;Next;</span><br><span class="line">		p = q;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">SingleList Initlist(SingleList* L, int n)    //尾插法</span><br><span class="line">&#123;</span><br><span class="line">	SingleList* p = new SingleList;</span><br><span class="line">	p = L;</span><br><span class="line">	p-&gt;Data = n;</span><br><span class="line">	for (int i = 0; i &lt; n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		int d;</span><br><span class="line">		cin &gt;&gt; d;</span><br><span class="line">		SingleList* q = new SingleList;</span><br><span class="line">		p-&gt;Next = q;</span><br><span class="line">		q-&gt;Data = d;</span><br><span class="line">		p = q;</span><br><span class="line">	&#125;</span><br><span class="line">	return *L;</span><br><span class="line">&#125;</span><br><span class="line">void sum(SingleList* L1, SingleList* L2, int length,SingleList *Sum)      //求和</span><br><span class="line">&#123;</span><br><span class="line">	SingleList* p1 = new SingleList;</span><br><span class="line">	SingleList* p2 = new SingleList;</span><br><span class="line">	SingleList* s1 = new SingleList;</span><br><span class="line">	SingleList* s = new SingleList;</span><br><span class="line">	SingleList* q1 = new SingleList;</span><br><span class="line">	SingleList* q2 = new SingleList;</span><br><span class="line">	p1 = L1-&gt;Next;</span><br><span class="line">	p2 = L2-&gt;Next;</span><br><span class="line">	Sum-&gt;Data = length;</span><br><span class="line">	s1 = Sum;</span><br><span class="line">	//Sum-&gt;Data = 0;</span><br><span class="line">	int a = 0;</span><br><span class="line">	for (int i = 0; i &lt;length; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		if ((p1-&gt;Data + p2-&gt;Data) &gt;= 10)</span><br><span class="line">			&#123;</span><br><span class="line"></span><br><span class="line">				SingleList* s2 = new SingleList;</span><br><span class="line"></span><br><span class="line">				s1-&gt;Next = s2;</span><br><span class="line">				q1 = p1-&gt;Next;</span><br><span class="line">				q2 = p2-&gt;Next;</span><br><span class="line">				s2-&gt;Data = p1-&gt;Data + p2-&gt;Data - 10 + a;</span><br><span class="line">				s1 = s2;</span><br><span class="line">				p1 = q1;</span><br><span class="line">				p2 = q2;</span><br><span class="line">				a = 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line"></span><br><span class="line">				SingleList* s2 = new SingleList;</span><br><span class="line">				s1-&gt;Next = s2;</span><br><span class="line">				q1 = p1-&gt;Next;</span><br><span class="line">				q2 = p2-&gt;Next;</span><br><span class="line">				s2-&gt;Data = p1-&gt;Data + p2-&gt;Data + a;</span><br><span class="line">				s1 = s2;</span><br><span class="line">				p1 = q1;</span><br><span class="line">				p2 = q2;</span><br><span class="line">				a = 0;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//return Sum-&gt;Data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SingleList become(SingleList* L,int  len,SingleList *M)     //逆置单链表</span><br><span class="line">&#123;</span><br><span class="line">	SingleList* p = new SingleList;</span><br><span class="line">	SingleList* q = new SingleList;</span><br><span class="line">	SingleList* l = new SingleList;</span><br><span class="line">	q = M;</span><br><span class="line">	M-&gt;Data = L-&gt;Data;</span><br><span class="line">	l = L;</span><br><span class="line">	for (int j = len; j &gt; 0; --j)</span><br><span class="line">	&#123;</span><br><span class="line">		for (int i = 0; i &lt; j; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			p = l-&gt;Next;</span><br><span class="line">			l = p;</span><br><span class="line">		&#125;</span><br><span class="line">		SingleList* o = new SingleList;</span><br><span class="line">		</span><br><span class="line">		q-&gt;Next = o;</span><br><span class="line">		o-&gt;Data = p-&gt;Data;</span><br><span class="line">		q = o;</span><br><span class="line">		l = L;</span><br><span class="line">	&#125;</span><br><span class="line">	return *M;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	SingleList* L1 = new SingleList, * L2 = new SingleList;  //创建单链表</span><br><span class="line">	SingleList* M1 = new SingleList, * M2 = new SingleList; </span><br><span class="line">	SingleList* Sum1 = new SingleList, * Sum2 = new SingleList;//逆置后的单链表</span><br><span class="line">	int len1, len2;                                          //两个链表长度</span><br><span class="line">	int new_len;</span><br><span class="line">	int length;</span><br><span class="line">	cout &lt;&lt; &quot;请输入L1链表的长度：&quot;;</span><br><span class="line">	cin &gt;&gt; len1;</span><br><span class="line">	cout &lt;&lt; &quot;请输入L2链表的长度：&quot;;</span><br><span class="line">	cin &gt;&gt; len2;</span><br><span class="line">	L1-&gt;Data = len1;</span><br><span class="line">	L2-&gt;Data = len2;</span><br><span class="line">	int target;</span><br><span class="line">	cout &lt;&lt; &quot;请输入L1的数字：&quot;;</span><br><span class="line">	Initlist(L1, len1);                             //链表初始化</span><br><span class="line">	cout &lt;&lt; &quot;请输入L2的数字：&quot;;</span><br><span class="line">	Initlist(L2, len2);</span><br><span class="line">	output (L1, len1);                              //打印链表</span><br><span class="line">	output(L2, len1);</span><br><span class="line">	become(L1, len1, M1);                            //逆置</span><br><span class="line">	become(L2, len2, M2);</span><br><span class="line">	output(M1, len1);</span><br><span class="line">	output(M2, len2);</span><br><span class="line"></span><br><span class="line">	if (len1 &gt; len2)</span><br><span class="line">	&#123;</span><br><span class="line">		length = len1;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		length = len2;</span><br><span class="line">	&#125;</span><br><span class="line">	sum(M1, M2, length, Sum1);                           //求和</span><br><span class="line">	output(Sum1, length);</span><br><span class="line">	become(Sum1, length, Sum2);</span><br><span class="line">	output(Sum2, length);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>暂时没有实现最高位产生进位和不同位数相加。</p>
+<hr>
+]]></content>
       <categories>
-          
-          <category> 笔记 </category>
-          
+        <category>笔记</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> c++ </tag>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 链表 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>博客搭建</title>
-      <link href="/2019/10/23/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-      <url>/2019/10/23/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-      
-        <content type="html"><![CDATA[<hr><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr><p>这篇博文记录一下我搭建这个博客的历程，踩了无数坑，甚至还完全推倒重新来过……最终，虽不尽人意，但勉强能看，而且笔者对前端的了解可以说是一窍不通。因此，博客的搭建完全建立在前人的肩膀上。我体会到了乘凉的舒爽，也想为新人们载棵树，虽然小，但万一长大了呢？就借此记录一下踩的坑，和解决办法。共勉！</p><hr><h1 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h1><hr><p>此类教程网上有很多，这里就不一一赘述了，贴一些教程以备不时之需。<br>知乎的这篇文章很全面，从git，node的下载，到github仓库的建立都有：<a href="https://zhuanlan.zhihu.com/p/60578464" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/60578464</a><br>通过这篇文章足够建立一个简单的博客。</p><hr><h1 id="Next主题的使用"><a href="#Next主题的使用" class="headerlink" title="Next主题的使用"></a>Next主题的使用</h1><hr><p>进入Next主页：<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br>按照上面的教程一步步来做，博客的很多功能都具备，其中在不蒜子统计那里无法显示访问人数和浏览量的问题<br>可以参照这篇简书的文章：<a href="https://www.jianshu.com/p/fd3accaa2ae0" target="_blank" rel="noopener">https://www.jianshu.com/p/fd3accaa2ae0</a></p><hr><h1 id="小功能的添加"><a href="#小功能的添加" class="headerlink" title="小功能的添加"></a>小功能的添加</h1><hr><h2 id="添加一个网页音乐播放器"><a href="#添加一个网页音乐播放器" class="headerlink" title="添加一个网页音乐播放器"></a>添加一个网页音乐播放器</h2><hr><p>可以参照这位博主的博客：<a href="https://asdfv1929.github.io/2018/05/26/next-add-music/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/05/26/next-add-music/</a><br>对于其中音乐地址的获取可以参照我的博文：</p><hr><h2 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h2><hr><p>也可以参照这位博主的博文：<a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/20/gitalk/</a></p><p>在这里我要多说一句，在申请Register Application填写url的时候的时候，一定要注意大小写的问题，很重要。在这里我快被搞奔溃了(v-v)，不过学到了东西，URL是区分大小写的，嘻嘻。如果在这里遇到其他问题，找度娘、简书、知乎，包括CSDN。</p><hr><h2 id="网页内接入在线联系方式"><a href="#网页内接入在线联系方式" class="headerlink" title="网页内接入在线联系方式"></a>网页内接入在线联系方式</h2><hr><p>哈哈哈哈，还是这位博主：<a href="https://asdfv1929.github.io/2018/01/21/daovoice/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/21/daovoice/</a><br>写完之后回看了一下，貌似都是别人的东西，不顾没关系啦，完成了就好。</p><hr><h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><hr><p>最后，在结尾的部分感谢一下在我博客建立的过程中提供服务的网站，万分感谢！</p><p>LeanCloud：<a href="https://leancloud.cn/" target="_blank" rel="noopener">https://leancloud.cn/</a><br>DaoVoice：<a href="http://www.daovoice.io/" target="_blank" rel="noopener">http://www.daovoice.io/</a><br>网易云音乐：<a href="https://music.163.com/" target="_blank" rel="noopener">https://music.163.com/</a><br>Font Awesome：<a href="http://www.fontawesome.com.cn/" target="_blank" rel="noopener">http://www.fontawesome.com.cn/</a><br>easyicon：<a href="https://www.easyicon.net/" target="_blank" rel="noopener">https://www.easyicon.net/</a></p><p>此处@asdfv1929，感谢您的博文在我搭建博客过程中的帮助，万分感谢！！！</p><p>加一个我的LeanCloud推介链接：<a href="https://leancloud.cn/?source=NG0N0LHN" target="_blank" rel="noopener">https://leancloud.cn/?source=NG0N0LHN</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客搭建</title>
+    <url>/2019/10/23/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>这篇博文记录一下我搭建这个博客的历程，踩了无数坑，甚至还完全推倒重新来过……最终，虽不尽人意，但勉强能看，而且笔者对前端的了解可以说是一窍不通。因此，博客的搭建完全建立在前人的肩膀上。我体会到了乘凉的舒爽，也想为新人们载棵树，虽然小，但万一长大了呢？就借此记录一下踩的坑，和解决办法。共勉！</p>
+<hr>
+<h1 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h1><hr>
+<p>此类教程网上有很多，这里就不一一赘述了，贴一些教程以备不时之需。<br>知乎的这篇文章很全面，从git，node的下载，到github仓库的建立都有：<a href="https://zhuanlan.zhihu.com/p/60578464" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/60578464</a><br>通过这篇文章足够建立一个简单的博客。</p>
+<hr>
+<h1 id="Next主题的使用"><a href="#Next主题的使用" class="headerlink" title="Next主题的使用"></a>Next主题的使用</h1><hr>
+<p>进入Next主页：<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br>按照上面的教程一步步来做，博客的很多功能都具备，其中在不蒜子统计那里无法显示访问人数和浏览量的问题<br>可以参照这篇简书的文章：<a href="https://www.jianshu.com/p/fd3accaa2ae0" target="_blank" rel="noopener">https://www.jianshu.com/p/fd3accaa2ae0</a></p>
+<hr>
+<h1 id="小功能的添加"><a href="#小功能的添加" class="headerlink" title="小功能的添加"></a>小功能的添加</h1><hr>
+<h2 id="添加一个网页音乐播放器"><a href="#添加一个网页音乐播放器" class="headerlink" title="添加一个网页音乐播放器"></a>添加一个网页音乐播放器</h2><hr>
+<p>可以参照这位博主的博客：<a href="https://asdfv1929.github.io/2018/05/26/next-add-music/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/05/26/next-add-music/</a><br>对于其中音乐地址的获取可以参照我的博文：</p>
+<hr>
+<h2 id="添加评论系统"><a href="#添加评论系统" class="headerlink" title="添加评论系统"></a>添加评论系统</h2><hr>
+<p>也可以参照这位博主的博文：<a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/20/gitalk/</a></p>
+<p>在这里我要多说一句，在申请Register Application填写url的时候的时候，一定要注意大小写的问题，很重要。在这里我快被搞奔溃了(v-v)，不过学到了东西，URL是区分大小写的，嘻嘻。如果在这里遇到其他问题，找度娘、简书、知乎，包括CSDN。</p>
+<hr>
+<h2 id="网页内接入在线联系方式"><a href="#网页内接入在线联系方式" class="headerlink" title="网页内接入在线联系方式"></a>网页内接入在线联系方式</h2><hr>
+<p>哈哈哈哈，还是这位博主：<a href="https://asdfv1929.github.io/2018/01/21/daovoice/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/21/daovoice/</a><br>写完之后回看了一下，貌似都是别人的东西，不顾没关系啦，完成了就好。</p>
+<hr>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><hr>
+<p>最后，在结尾的部分感谢一下在我博客建立的过程中提供服务的网站，万分感谢！</p>
+<p>LeanCloud：<a href="https://leancloud.cn/" target="_blank" rel="noopener">https://leancloud.cn/</a><br>DaoVoice：<a href="http://www.daovoice.io/" target="_blank" rel="noopener">http://www.daovoice.io/</a><br>网易云音乐：<a href="https://music.163.com/" target="_blank" rel="noopener">https://music.163.com/</a><br>Font Awesome：<a href="http://www.fontawesome.com.cn/" target="_blank" rel="noopener">http://www.fontawesome.com.cn/</a><br>easyicon：<a href="https://www.easyicon.net/" target="_blank" rel="noopener">https://www.easyicon.net/</a></p>
+<p>此处@asdfv1929，感谢您的博文在我搭建博客过程中的帮助，万分感谢！！！</p>
+<p>加一个我的LeanCloud推介链接：<a href="https://leancloud.cn/?source=NG0N0LHN" target="_blank" rel="noopener">https://leancloud.cn/?source=NG0N0LHN</a></p>
+]]></content>
       <categories>
-          
-          <category> 教程 </category>
-          
+        <category>教程</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> next </tag>
-            
-            <tag> 教程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>网易云外链</title>
-      <link href="/2019/10/23/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/"/>
-      <url>/2019/10/23/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</url>
-      
-        <content type="html"><![CDATA[<hr><h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>打开网易云音乐，随便找到一首歌，播放，复制网址的ID，</p><p>例如：肖邦的钢琴曲，A小调圆舞曲&lt;遗作&gt;</p><p>url是: <a href="https://music.163.com/#/song?id=1295212133" target="_blank" rel="noopener">https://music.163.com/#/song?id=1295212133</a></p><p>记住上面的id是1295212133</p><hr><h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><p>利用公式<br><a href="http://music.163.com/song/media/outer/url?id=数字.mp3" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=数字.mp3</a></p><p>用上面得到的数字，即1295212133替换“数字”得到</p><p><a href="http://music.163.com/song/media/outer/url?id=1295212133.mp3" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=1295212133.mp3</a></p><p>就是要找的网易云影月下载和收听地址，也是外链。长期有效，亲测可行。</p><hr><h1 id="WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！"><a href="#WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！" class="headerlink" title="WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！"></a>WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！</h1><hr>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+        <tag>next</tag>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网易云外链</title>
+    <url>/2019/10/23/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/</url>
+    <content><![CDATA[<hr>
+<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>打开网易云音乐，随便找到一首歌，播放，复制网址的ID，</p>
+<p>例如：肖邦的钢琴曲，A小调圆舞曲&lt;遗作&gt;</p>
+<p>url是: <a href="https://music.163.com/#/song?id=1295212133" target="_blank" rel="noopener">https://music.163.com/#/song?id=1295212133</a></p>
+<p>记住上面的id是1295212133</p>
+<hr>
+<h1 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h1><p>利用公式<br><a href="http://music.163.com/song/media/outer/url?id=数字.mp3" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=数字.mp3</a></p>
+<p>用上面得到的数字，即1295212133替换“数字”得到</p>
+<p><a href="http://music.163.com/song/media/outer/url?id=1295212133.mp3" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=1295212133.mp3</a></p>
+<p>就是要找的网易云影月下载和收听地址，也是外链。长期有效，亲测可行。</p>
+<hr>
+<h1 id="WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！"><a href="#WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！" class="headerlink" title="WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！"></a>WARNING：鼓励收听正版付费歌曲，请勿用此利用营利！！！</h1><hr>
+]]></content>
       <categories>
-          
-          <category> 教程 </category>
-          
+        <category>教程</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 音乐 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>第一篇博文</title>
-      <link href="/2019/10/22/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/"/>
-      <url>/2019/10/22/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-      
-        <content type="html"><![CDATA[<hr><p>随便写点东西。</p><hr><p>首先，这篇博客的主要目的就是测试。</p><p>其次，说说自己搭建这么一个博客的目的是什么。首先炫酷，能在广阔的互联网<br>里有自己的一方小天地，不管干什么想想都是一个很cool的事情。然后就是希望<br>能找到一个地方来记录自己的过去，如果可能的话，等10年，20年过后再来回首<br>看看，看看过去的自己，总能收获点什么。</p><p>最后，我也是希望能通过这个博客推动自己学习，也是给自己一个监督吧。</p><hr><p>以上。</p>]]></content>
-      
-      
+      <tags>
+        <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一篇博文</title>
+    <url>/2019/10/22/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<hr>
+<p>随便写点东西。</p>
+<hr>
+<p>首先，这篇博客的主要目的就是测试。</p>
+<p>其次，说说自己搭建这么一个博客的目的是什么。首先炫酷，能在广阔的互联网<br>里有自己的一方小天地，不管干什么想想都是一个很cool的事情。然后就是希望<br>能找到一个地方来记录自己的过去，如果可能的话，等10年，20年过后再来回首<br>看看，看看过去的自己，总能收获点什么。</p>
+<p>最后，我也是希望能通过这个博客推动自己学习，也是给自己一个监督吧。</p>
+<hr>
+<p>以上。</p>
+]]></content>
       <categories>
-          
-          <category> 随笔 </category>
-          
+        <category>随笔</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 第一篇博文 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>第一篇博文</tag>
+      </tags>
+  </entry>
 </search>
