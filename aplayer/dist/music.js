@@ -8,6 +8,7 @@ const ap = new APlayer({
         artist: 'Kim Taylor',
         url: 'http://music.163.com/song/media/outer/url?id=1306496078.mp3',
         cover: 'http://p2.music.126.net/cCw5Kr5C52bYbV-AOp6IUA==/109951163073357482.jpg?param=130y130',
+	
       },
 	  {
         name: "A小调圆舞曲<遗作>",
